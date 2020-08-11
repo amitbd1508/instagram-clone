@@ -7,6 +7,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
 import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
@@ -28,7 +35,14 @@ const firebaseConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatCardModule,
+    AngularFireStorageModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
