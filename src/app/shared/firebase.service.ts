@@ -18,12 +18,9 @@ export class FirebaseService {
 
   addPost(post): Promise<any> {
     console.log(post);
-    return new Promise<any>((resolve, reject) => {
-      this.firestore
-          .collection('posts')
-          .add(post)
-          .then(res => {}, err => reject(err));
-    });
+    return  this.firestore
+        .collection('posts')
+        .add(post);
   }
 
   getPosts(): Observable<any> {

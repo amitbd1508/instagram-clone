@@ -20,6 +20,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommentComponent } from './component/comment/comment.component';
 import { AddPostComponent } from './component/add-post/add-post.component';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
@@ -54,7 +57,10 @@ const firebaseConfig = {
     MatButtonModule,
     FontAwesomeModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgxLoadingModule.forRoot({}),
+    ToastrModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
