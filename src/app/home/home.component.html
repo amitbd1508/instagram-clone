@@ -1,28 +1,60 @@
-<div class="bounds">
+<div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
 
-    <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+  <div fxFlex="15" fxFlex.xs="15">
 
-        <div fxFlex="15" class="sec1" fxFlex.xs="15">
-            <div class="form-group col-12">
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
-            </div>
+    <mat-card>
+      <mat-card-header>
+        <div class="form-group col-12">
+          <input type="file"
+                 id="file"
+                 #userPhoto
+                 (change)="onFileSelected($event)"
+                 name="image"
+                 autocomplete="off"/>
         </div>
-        <div fxFlex="70" class="sec2">
-            second-section================================================================
-        </div>
-        <div fxFlex="15" class="sec3" fxFlex.xs="15">
-            third-section+++++++++++++++++++++++++++++++++++++++++
-        </div>
+      </mat-card-header>
+    </mat-card>
 
-    </div>
-    <div fxLayout="row">
+  </div>
 
-    </div>
+  <div fxFlex="70" class="sec2">
+    <mat-card>
+      <mat-card-header>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-actions>
+            <button mat-icon-button color="primary">
+              <mat-icon>home</mat-icon>
+            </button>
+            <button mat-button><span class="material-icons">check_circle</span></button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <div fxFlex="15" fxFlex.xs="15">
+    <mat-card>
+      <mat-card-header>
+        Right-section
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+</div>
+<div fxLayout="row">
 
 </div>
