@@ -15,6 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CommentComponent } from './component/comment/comment.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
@@ -30,7 +34,8 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,10 @@ const firebaseConfig = {
     MatCardModule,
     AngularFireStorageModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

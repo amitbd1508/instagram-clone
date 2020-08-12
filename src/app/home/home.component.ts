@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { FirebaseService } from '../shared/firebase.service';
+import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -13,15 +15,32 @@ export class HomeComponent implements OnInit {
   selectedFile: File = null;
   fb;
   downloadURL: Observable<string>;
-  constructor(private storage: AngularFireStorage) {
+  posts: any [];
+  faHeart;
+  faComment;
+  faPaperPlane;
+  constructor(private storage: AngularFireStorage, private firebase: FirebaseService) {
+    this.faHeart = faHeart;
+    this.faComment = faComment;
+    this.faPaperPlane = faPaperPlane;
   }
 
   ngOnInit(): void {
+    this.firebase.getPosts()
+        .subscribe(data => {
+          this.posts = data;
+          console.log(this.posts);
+        });
   }
 
   onFileSelected(event): void {
+    this.selectedFile = event.target.files[0];
+    this.uploadFile(this.selectedFile);
+  }
+
+  uploadFile(image): void {
     const n = Date.now();
-    const file = event.target.files[0];
+    const file = image;
     const filePath = `post-images/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
@@ -33,14 +52,28 @@ export class HomeComponent implements OnInit {
               this.downloadURL.subscribe(url => {
                 if (url) {
                   this.fb = url;
+                  console.log('===', url);
+                  const post = {
+                    image: url,
+                    description: `This is a simple post ${Date.now()}`,
+                    postedBy: {
+                      name: 'Amit Ghosh',
+                      username: 'amit.ghosh'
+                    },
+                    createdAt: Date.now()
+                  };
+
+                  this.firebase.addPost(post)
+                      .then(data => {
+                        console.log(data);
+                      });
                 }
-                console.log(this.fb);
               });
             })
         )
         .subscribe(url => {
           if (url) {
-            console.log(url);
+            console.log('++++', url.downloadURL);
           }
         });
   }
