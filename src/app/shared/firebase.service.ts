@@ -10,7 +10,7 @@ export class FirebaseService {
   public postsCollectionRef: any;
   public postsCollection: any;
 
-  constructor(private firestore: AngulargFirestore) {
+  constructor(private firestore: AngularFirestore) {
     this.postsCollectionRef = this.firestore.collection<any>('posts', ref => ref.orderBy('createdAt', 'desc'));
     this.postsCollection = this.postsCollectionRef.valueChanges().pipe(shareReplay(1));
 
