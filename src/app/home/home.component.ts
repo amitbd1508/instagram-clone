@@ -11,15 +11,11 @@ import { faHeart, faComment, faPaperPlane } from '@fortawesome/free-regular-svg-
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  selectedFile: File = null;
-  fb;
-  downloadURL: Observable<string>;
   posts: any [];
   faHeart;
   faComment;
   faPaperPlane;
-  constructor(private storage: AngularFireStorage, private firebase: FirebaseService) {
+  constructor(private firebase: FirebaseService) {
     this.faHeart = faHeart;
     this.faComment = faComment;
     this.faPaperPlane = faPaperPlane;
@@ -30,51 +26,6 @@ export class HomeComponent implements OnInit {
         .subscribe(data => {
           this.posts = data;
           console.log(this.posts);
-        });
-  }
-
-  onFileSelected(event): void {
-    this.selectedFile = event.target.files[0];
-    this.uploadFile(this.selectedFile);
-  }
-
-  uploadFile(image): void {
-    const n = Date.now();
-    const file = image;
-    const filePath = `post-images/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    task
-        .snapshotChanges()
-        .pipe(
-            finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-              this.downloadURL.subscribe(url => {
-                if (url) {
-                  this.fb = url;
-                  console.log('===', url);
-                  const post = {
-                    image: url,
-                    description: `This is a simple post ${Date.now()}`,
-                    postedBy: {
-                      name: 'Amit Ghosh',
-                      username: 'amit.ghosh'
-                    },
-                    createdAt: Date.now()
-                  };
-
-                  this.firebase.addPost(post)
-                      .then(data => {
-                        console.log(data);
-                      });
-                }
-              });
-            })
-        )
-        .subscribe(url => {
-          if (url) {
-            console.log('++++', url.downloadURL);
-          }
         });
   }
 }

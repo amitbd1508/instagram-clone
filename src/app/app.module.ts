@@ -19,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommentComponent } from './component/comment/comment.component';
+import { AddPostComponent } from './component/add-post/add-post.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
@@ -35,7 +36,8 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     HomeComponent,
-    CommentComponent
+    CommentComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

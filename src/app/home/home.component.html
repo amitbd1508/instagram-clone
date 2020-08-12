@@ -2,22 +2,22 @@
 
   <div fxFlex="25" fxFlex.xs="25">
 
-    <mat-card>
-      <mat-card-header>
-        <div class="form-group col-12">
-          <input type="file"
-                 id="file"
-                 #userPhoto
-                 (change)="onFileSelected($event)"
-                 name="image"
-                 autocomplete="off"/>
-        </div>
-      </mat-card-header>
-    </mat-card>
+      <mat-card>
+          <mat-card-header>
+              Left-section
+          </mat-card-header>
+      </mat-card>
 
   </div>
 
   <div fxFlex="50">
+      <div>
+          <mat-card >
+              <mat-card-header style="width: 100%">
+                  <app-add-post style="width: 100%"></app-add-post>
+              </mat-card-header>
+          </mat-card>
+      </div>
     <div *ngFor="let post of posts" >
         <mat-card>
             <mat-card-header style="justify-content: center;">
