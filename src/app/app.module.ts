@@ -23,6 +23,11 @@ import { AddPostComponent } from './component/add-post/add-post.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SignInComponent } from './component/sign-in/sign-in.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
@@ -40,12 +45,17 @@ const firebaseConfig = {
     AppComponent,
     HomeComponent,
     CommentComponent,
-    AddPostComponent
+    AddPostComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
     MatGridListModule,
