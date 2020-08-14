@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { User } from './user';
+import { Post } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,19 @@ export class FirebaseService {
     this.postsCollection = this.postsCollectionRef.valueChanges().pipe(shareReplay(1));
   }
 
-  addPost(post): Promise<any> {
+  addPost(post: Post): Promise<any> {
     console.log(post);
     return  this.firestore
         .collection('posts')
-        .add(post);
+        .doc(post.id)
+        .set(post);
   }
 
   getPosts(): Observable<any> {
     return this.postsCollection;
+  }
+
+  getPostId(): string {
+    return this.firestore.createId();
   }
 }

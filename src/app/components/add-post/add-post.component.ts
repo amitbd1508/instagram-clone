@@ -5,6 +5,10 @@ import { FirebaseService } from '../../shared/firebase.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
+import { Post } from '../../shared/post';
+import { user } from 'firebase-functions/lib/providers/auth';
+import { User } from '../../shared/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -19,10 +23,20 @@ export class AddPostComponent implements OnInit {
   downloadURL: Observable<string>;
   loading = false;
 
-  constructor(private firebase: FirebaseService, private storage: AngularFireStorage, private toastr: ToastrService) {
+  currentUser: User;
+
+  constructor(private firebase: FirebaseService,
+              private storage: AngularFireStorage,
+              private router: Router,
+              private toastr: ToastrService) {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit(): void {
+    if (!this.currentUser) {
+      this.showMessage('Something went worng please login', true);
+      this.router.navigate(['sign-in']);
+    }
   }
 
   addPost(): void {
@@ -64,14 +78,12 @@ export class AddPostComponent implements OnInit {
               this.downloadURL.subscribe(url => {
                 if (url) {
                   this.fb = url;
-                  console.log('===', url);
-                  const post = {
-                    image: url,
+                  const post: Post = {
+                    id: this.firebase.getPostId(),
+                    imageUrl: url,
                     description: this.description,
-                    postedBy: {
-                      name: 'Amit Ghosh',
-                      username: 'amit.ghosh'
-                    },
+                    postedBy: this.currentUser,
+                    comments: [],
                     createdAt: Date.now()
                   };
 

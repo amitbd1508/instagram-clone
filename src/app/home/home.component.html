@@ -24,10 +24,10 @@
                 <mat-card style="width: 100%">
                     <mat-card-header>
                         <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title>{{post.postedBy.username}}</mat-card-title>
-                        <mat-card-subtitle>{{post.postedBy.name}}</mat-card-subtitle>
+                        <mat-card-title>{{post.postedBy.displayName? post.postedBy.displayName : post.postedBy.uid}}</mat-card-title>
+                        <mat-card-subtitle>{{post.postedBy.email}}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image src="{{post.image}}" alt="Photo of a Shiba Inu">
+                    <img mat-card-image src="{{post.imageUrl}}" alt="Photo of a Shiba Inu">
                     <mat-card-content>
                         <p>
                             {{post.description}}

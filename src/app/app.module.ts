@@ -18,16 +18,16 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { CommentComponent } from './component/comment/comment.component';
-import { AddPostComponent } from './component/add-post/add-post.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { SignInComponent } from './component/sign-in/sign-in.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
