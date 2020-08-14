@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { User } from './user';
 import { Post } from './post';
+import { Comment } from './comment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,18 @@ export class FirebaseService {
 
   getPostId(): string {
     return this.firestore.createId();
+  }
+
+  addComment(postId: string, comment: Comment) {
+    let post: Post;
+    this.firestore.collection('posts').doc(postId).get().subscribe(data => {
+      post = data.data() as Post;
+      post.comments.push(comment);
+
+      return this.firestore
+          .collection('posts')
+          .doc(postId)
+          .set(post);
+    });
   }
 }

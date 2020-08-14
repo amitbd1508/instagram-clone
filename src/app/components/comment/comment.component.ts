@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FirebaseService } from '../../shared/firebase.service';
+import { User } from '../../shared/user';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { Comment } from '../../shared/comment';
 
 @Component({
   selector: 'app-comment',
@@ -7,9 +12,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+  message = '';
 
-  ngOnInit(): void {
+  @Input() postId: string;
+
+  constructor(private firebase: FirebaseService, private toastr: ToastrService, private  router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
 
+  ngOnInit(): void {
+    if (!this.currentUser) {
+      this.showMessage('Something went worng please login', true);
+      this.router.navigate(['sign-in']);
+    }
+  }
+
+  showMessage(message: string, error: boolean = false): void {
+    if (error) {
+      this.toastr.error(message, 'Error', {
+        timeOut: 2000,
+      });
+    } else {
+      this.toastr.success(message, 'Message', {
+        timeOut: 2000,
+      });
+    }
+  }
+
+  addComment() {
+    const comment: Comment = {
+      message: this.message,
+      createdAt: Date.now(),
+      postedBy: this.currentUser
+    };
+
+    this.firebase.addComment(this.postId, comment);
+  }
 }

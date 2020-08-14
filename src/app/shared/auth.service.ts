@@ -41,7 +41,6 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
-          console.log(result.user.uid, result.user.displayName, result.user.email);
           this.ngZone.run(() => {
             this.router.navigate(['home']);
           });
@@ -52,14 +51,15 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(name, email, password) {
+    console.log('---', name);
     return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
             this.router.navigate(['home']);
           });
           this.SendVerificationMail();
-          this.SetUserData(result.user);
+          this.SetUserData(result.user, name );
         }).catch((error) => {
           window.alert(error.message);
         });
@@ -104,12 +104,13 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  SetUserData(user, userName?) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    console.log(user.displayName, userName);
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: user.displayName !== null ? user.displayName : userName,
       photoURL: user.photoURL,
       emailVerified: true,
       createdAt: Date.now(),
