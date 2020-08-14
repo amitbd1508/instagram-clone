@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../shared/user';
+import { User } from './user';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -41,6 +41,7 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
+          console.log(result.user.uid, result.user.displayName, result.user.email);
           this.ngZone.run(() => {
             this.router.navigate(['home']);
           });
@@ -54,8 +55,9 @@ export class AuthService {
   SignUp(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
-          /* Call the SendVerificaitonMail() function when new user sign
-          up and returns promise */
+          this.ngZone.run(() => {
+            this.router.navigate(['home']);
+          });
           this.SendVerificationMail();
           this.SetUserData(result.user);
         }).catch((error) => {
@@ -65,10 +67,10 @@ export class AuthService {
 
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
-    /*return this.afAuth.currentUser.sendEmailVerification()
-        .then(() => {
-          this.router.navigate(['verify-email-address']);
-        });*/
+    // return this.afAuth.currentUser.sendEmailVerification()
+    //     .then(() => {
+    //       this.router.navigate(['verify-email-address']);
+    //     });
   }
 
   // Reset Forggot password
@@ -102,14 +104,14 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  SetUserData(user: User) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: true,
     };
     return userRef.set(userData, {
       merge: true
