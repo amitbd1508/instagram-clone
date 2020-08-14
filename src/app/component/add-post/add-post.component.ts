@@ -89,9 +89,6 @@ export class AddPostComponent implements OnInit {
             })
         )
         .subscribe(url => {
-          if (url) {
-            console.log('++++', url.downloadURL);
-          }
         });
   }
 

@@ -30,14 +30,14 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBszKfsV_mNpLJL9oO3DCIi5PP7PCjLMLk',
-  authDomain: 'instagram-445ad.firebaseapp.com',
-  databaseURL: 'https://instagram-445ad.firebaseio.com',
-  projectId: 'instagram-445ad',
-  storageBucket: 'instagram-445ad.appspot.com',
-  messagingSenderId: '1087806706733',
-  appId: '1:1087806706733:web:a8d1bc536d667a17f1d4a4',
-  measurementId: 'G-T1WDQXDTLL'
+  apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
+  authDomain: 'instagram-fr.firebaseapp.com',
+  databaseURL: 'https://instagram-fr.firebaseio.com',
+  projectId: 'instagram-fr',
+  storageBucket: 'instagram-fr.appspot.com',
+  messagingSenderId: '816140624763',
+  appId: '1:816140624763:web:e43b527ee289d9d9d4d3de',
+  measurementId: 'G-1896YRBB7R'
 };
 
 @NgModule({
@@ -75,4 +75,5 @@ const firebaseConfig = {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
