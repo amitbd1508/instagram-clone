@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommentComponent } from './components/comment/comment.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ToastrModule } from 'ngx-toastr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -30,6 +30,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchComponent } from './components/search/search.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -74,7 +76,10 @@ const firebaseConfig = {
     MatInputModule,
     NgxLoadingModule.forRoot({}),
     ToastrModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
