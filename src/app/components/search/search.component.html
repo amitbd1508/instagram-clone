@@ -1,0 +1,17 @@
+<div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput
+                   placeholder="Search profile"
+                   aria-label="User"
+                   [matAutocomplete]="auto"
+                   [formControl]="stateCtrl">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let user of filteredStates | async" [value]="user.displayName">
+                    <img class="example-option-img" aria-hidden="true" [src]="user.photoURL" height="25">
+                    <span>{{user.displayName}}</span>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!disable">
     <mat-form-field>
         <mat-placeholder>Comment</mat-placeholder>
         <input matInput type="comment" [(ngModel)]="message">

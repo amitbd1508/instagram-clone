@@ -126,4 +126,15 @@ export class AuthService {
     });
   }
 
+  goToProfile() {
+    this.router.navigate(['profile']);
+  }
+
+  goToSignIn() {
+    this.router.navigate(['sign-in']);
+  }
+  goToSignUp() {
+    this.router.navigate(['register-user']);
+  }
+
 }

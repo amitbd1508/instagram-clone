@@ -14,6 +14,7 @@ export class CommentComponent implements OnInit {
 
   currentUser: User;
   message = '';
+  disable: boolean;
 
   @Input() postId: string;
 
@@ -23,8 +24,9 @@ export class CommentComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.currentUser) {
-      this.showMessage('Something went worng please login', true);
-      this.router.navigate(['sign-in']);
+      this.disable = true;
+    } else {
+      this.disable = false;
     }
   }
 

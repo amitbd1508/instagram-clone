@@ -36,6 +36,10 @@ export class FirebaseService {
     return this.postsCollection;
   }
 
+  getUsers(): Observable<any> {
+    return this.usersCollection;
+  }
+
   getPostId(): string {
     return this.firestore.createId();
   }

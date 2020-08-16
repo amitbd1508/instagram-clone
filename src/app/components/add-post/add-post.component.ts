@@ -24,6 +24,7 @@ export class AddPostComponent implements OnInit {
   loading = false;
 
   currentUser: User;
+  disable: boolean;
 
   constructor(private firebase: FirebaseService,
               private storage: AngularFireStorage,
@@ -33,11 +34,11 @@ export class AddPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('current user ', this.currentUser);
-
     if (!this.currentUser) {
-      this.showMessage('Something went worng please login', true);
-      this.router.navigate(['sign-in']);
+      this.showMessage('Please login for post', true);
+      this.disable = true;
+    } else {
+      this.disable = false;
     }
   }
 

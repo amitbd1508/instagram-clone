@@ -1,4 +1,4 @@
-<mat-card >
+<mat-card *ngIf="!disable">
     <div class="form-group col-12">
         <img [src]="selectedFileUrl" height="200" *ngIf="selectedFileUrl">
         <input type="file"

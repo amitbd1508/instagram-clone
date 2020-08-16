@@ -32,6 +32,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SearchComponent } from './components/search/search.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ProfileSuggestionsComponent } from './components/profile-suggestions/profile-suggestions.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -55,7 +56,8 @@ const firebaseConfig = {
     ForgotPasswordComponent,
     VerifyEmailComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileSuggestionsComponent
   ],
   imports: [
     BrowserModule,

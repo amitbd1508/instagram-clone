@@ -2,17 +2,17 @@
   <span>Instagram</span>
   <span class="example-spacer"></span>
     <app-search></app-search>
-  <button class="mr-4">
+  <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignUp()">
     Register
   </button>
-  <button class="mr-4">
+  <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignIn()">
     Login
   </button>
 
-  <button mat-icon-button>
+  <button mat-icon-button *ngIf="authService.isLoggedIn" (click)="authService.goToProfile()">
     <mat-icon>account_box</mat-icon>
   </button>
-  <button mat-icon-button>
+  <button mat-icon-button *ngIf="authService.isLoggedIn">
     <mat-icon (click)="authService.SignOut()">logout</mat-icon>
   </button>
 </mat-toolbar>
