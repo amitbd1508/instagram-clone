@@ -4,6 +4,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +16,10 @@ export class AuthService {
   constructor(
       public afs: AngularFirestore,   // Inject Firestore service
       public afAuth: AngularFireAuth, // Inject Firebase auth service
+      private firebaseService: FirebaseService,
       public router: Router,
       public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    });
   }
 
   // Returns true when user is looged in and email is verified
@@ -41,10 +32,19 @@ export class AuthService {
   SignIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
-          this.ngZone.run(() => {
-            this.router.navigate(['home']);
-          });
-          this.SetUserData(result.user);
+          this.firebaseService.getUserById(result.user.uid)
+              .subscribe(currentUser => {
+                console.log('=======', currentUser);
+                this.userData = currentUser;
+                localStorage.setItem('user', JSON.stringify(this.userData));
+                JSON.parse(localStorage.getItem('user'));
+                this.ngZone.run(() => {
+                  this.router.navigate(['home']);
+                });
+                console.log(result.user, '====');
+              });
+
+          // this.SetUserData(result.user);
         }).catch((error) => {
           window.alert(error.message);
         });
@@ -59,7 +59,7 @@ export class AuthService {
             this.router.navigate(['home']);
           });
           this.SendVerificationMail();
-          this.SetUserData(result.user, name );
+          this.SetUserData(result.user, name);
         }).catch((error) => {
           window.alert(error.message);
         });
@@ -101,21 +101,19 @@ export class AuthService {
         });
   }
 
-  /* Setting up user data when sign in with username/password,
-  sign up with username/password and sign in with social auth
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user, userName?) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     console.log(user.displayName, userName);
-    const userData: User = {
+    const currentUser: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName !== null ? user.displayName : userName,
+      displayName: user.displayName ? user.displayName : userName,
       photoURL: user.photoURL,
       emailVerified: true,
       createdAt: Date.now(),
     };
-    return userRef.set(userData, {
+    console.log(currentUser);
+    return userRef.set(currentUser, {
       merge: true
     });
   }

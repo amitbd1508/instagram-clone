@@ -1,5 +1,20 @@
 <mat-toolbar color="primary">
   <span>Instagram</span>
+  <span class="example-spacer"></span>
+    <app-search></app-search>
+  <button class="mr-4">
+    Register
+  </button>
+  <button class="mr-4">
+    Login
+  </button>
+
+  <button mat-icon-button>
+    <mat-icon>account_box</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon (click)="authService.SignOut()">logout</mat-icon>
+  </button>
 </mat-toolbar>
 <div>
   <router-outlet></router-outlet>

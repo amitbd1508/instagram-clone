@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
+import { FirebaseService } from '../../shared/firebase.service';
+import { User } from '../../shared/user';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +10,14 @@ import { AuthService } from '../../shared/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  currentUser: User;
+  constructor(private authService: AuthService, private firebaseService: FirebaseService) {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+  }
 
   ngOnInit(): void {
+    console.log('++++', this.currentUser.uid);
+    // this.firebaseService.getUserById(this.currentUser.uid).subscribe(user => this.currentUser = user);
   }
 
 }

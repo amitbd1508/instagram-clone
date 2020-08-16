@@ -2,20 +2,27 @@
     <div class="inner-adjust">
 
         <div class="border-bottom">
-            <h1 class="h2">User Profile</h1>
+            <h3 class="h2">User Profile</h3>
         </div>
         <!-- Show user data when logged in -->
         <div class="row" *ngIf="authService.userData as user">
             <div class="col-md-12">
                 <div class="media">
                     <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                         alt="{{user.displayName}}">
+                         alt="{{currentUser.displayName}}">
                     <div class="media-body">
-                        <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                        <p>Email: <strong>{{user.email}}</strong></p>
-                        <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                        <h1>Hello: <strong>{{(currentUser.displayName) ? currentUser.displayName : 'User'}}</strong></h1>
+                        <p>Email: <strong>{{currentUser.email}}</strong></p>
+                        <p>Email Verified: <strong>{{currentUser.emailVerified}}</strong></p>
                     </div>
                 </div>
+                <mat-card>
+                    <mat-card-header>
+                        <button mat-button (click)="authService.SignOut()">
+                            <b>Logout</b>
+                        </button>
+                    </mat-card-header>
+                </mat-card>
             </div>
         </div>
 
