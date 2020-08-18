@@ -137,4 +137,7 @@ export class AuthService {
     this.router.navigate(['register-user']);
   }
 
+  gotToHome() {
+    this.router.navigate(['home']);
+  }
 }

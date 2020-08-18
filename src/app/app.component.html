@@ -1,7 +1,10 @@
 <mat-toolbar color="primary">
-  <span>Instagram</span>
-  <span class="example-spacer"></span>
-    <app-search></app-search>
+  <span class="mt-4" (click)="authService.gotToHome()">
+    <label>OP SCIENCES PVT</label>
+  </span>
+  <span class="example-spacer">
+  </span>
+  <app-search ></app-search>
   <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignUp()">
     Register
   </button>

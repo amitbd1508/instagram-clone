@@ -1,0 +1,31 @@
+<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
+
+    <div fxFlex="10" fxFlex.xs="10">
+
+    </div>
+
+    <div fxFlex="80" fxLayoutAlign="center">
+        <mat-card style="justify-content: center">
+            <div>
+                <img [src]="userSvc.getUser().photoURL" height="200">
+            </div>
+            <br>
+            <mat-card-content>
+                <p>
+                    <b>Name: </b>{{userSvc.getUser().displayName}}
+                </p>
+                <p>
+                    <b>Email: </b>{{userSvc.getUser().email}}
+                </p>
+            </mat-card-content>
+            <button mat-button style="justify-content: center">
+                Add As Friend
+            </button>
+        </mat-card>
+
+    </div>
+    <div fxFlex="10" fxFlex.xs="10">
+    </div>
+
+</div>
+

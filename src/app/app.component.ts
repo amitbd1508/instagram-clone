@@ -10,5 +10,5 @@ export class AppComponent {
 
   constructor(public authService: AuthService) { }
 
-  title = 'instagram';
+  title = 'OP SCIENCES PVT';
 }

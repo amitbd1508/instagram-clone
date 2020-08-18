@@ -8,8 +8,10 @@
                    [formControl]="stateCtrl">
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let user of filteredStates | async" [value]="user.displayName">
-                    <img class="example-option-img" aria-hidden="true" [src]="user.photoURL" height="25">
-                    <span>{{user.displayName}}</span>
+                    <div (click)="goToUserProfile(user)">
+                        <img class="example-option-img" aria-hidden="true" [src]="user.photoURL" height="25">
+                        | <span>{{user.displayName}}</span>
+                    </div>
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>

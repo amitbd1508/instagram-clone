@@ -67,4 +67,12 @@ export class FirebaseService {
               return { uid, ...data };
             }));
   }
+
+  updateUser(currentUser: User) {
+    const update = {
+      displayName: currentUser.displayName,
+      photoURL: currentUser.photoURL
+    };
+    return this.firestore.collection('users').doc(currentUser.uid).update(update);
+  }
 }

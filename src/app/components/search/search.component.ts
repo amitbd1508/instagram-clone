@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { User } from '../../shared/user';
 import { FirebaseService } from '../../shared/firebase.service';
+import { UserService } from '../../shared/user.service';
+import { Router } from '@angular/router';
 
 export interface State {
   flag: string;
@@ -22,7 +24,7 @@ export class SearchComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor(private firebase: FirebaseService) {
+  constructor(private firebase: FirebaseService, private userSvc: UserService, private route: Router) {
     this.firebase.getUsers()
         .subscribe(data => {
           this.users = data;
@@ -44,4 +46,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToUserProfile(user: User) {
+    this.userSvc.setUser(user);
+    this.route.navigate(['user-profile']);
+  }
 }

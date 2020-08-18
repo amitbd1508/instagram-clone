@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <mat-card>
-                    <div class="media">
+                    <div class="media"  (click)="goToUserProfile(randomUser)">
                         <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(randomUser.photoURL) ? randomUser.photoURL : '/assets/dummy-user.png'}}"
                              alt="{{randomUser.displayName}}">
 
@@ -23,7 +23,7 @@
                     </mat-card-header>
                     <mat-card-header>
                         <button mat-button (click)="generateRandomUser()">
-                            <b>Next</b>
+                            Next
                         </button>
                     </mat-card-header>
                 </mat-card>
