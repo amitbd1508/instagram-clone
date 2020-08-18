@@ -18,9 +18,10 @@
                     <b>Email: </b>{{userSvc.getUser().email}}
                 </p>
             </mat-card-content>
-            <button mat-button style="justify-content: center">
+            <button mat-button style="justify-content: center" (click)="addFriend()" *ngIf="!disable && !isAlreadyFriend">
                 Add As Friend
             </button>
+            <mat-card-title *ngIf="!disable && isAlreadyFriend">Already Added</mat-card-title>
         </mat-card>
 
     </div>

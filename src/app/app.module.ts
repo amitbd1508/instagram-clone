@@ -35,6 +35,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ProfileSuggestionsComponent } from './components/profile-suggestions/profile-suggestions.component';
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FriendListComponent } from './components/friend-list/friend-list.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -61,7 +62,8 @@ const firebaseConfig = {
     SearchComponent,
     ProfileSuggestionsComponent,
     AdvertisementComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FriendListComponent
   ],
   imports: [
     BrowserModule,

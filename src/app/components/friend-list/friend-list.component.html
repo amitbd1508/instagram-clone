@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-title> Friends </mat-card-title>
+    <div class="inboxContainer">
+        <mat-card *ngFor="let friend of friends" >
+            <mat-card-header>
+                <img mat-card-avatar class="example-header-image" src="{{friend.photoURL}}" alt="Image">
+                <mat-card-title>{{friend.displayName? friend.displayName : friend.uid}}</mat-card-title>
+                <mat-card-subtitle>{{friend.email}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+</mat-card>

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   faHeart;
   faComment;
   faPaperPlane;
+
   constructor(private firebase: FirebaseService, private  auth: AuthService) {
     this.faHeart = faHeart;
     this.faComment = faComment;
@@ -33,5 +34,9 @@ export class HomeComponent implements OnInit {
 
   logOut(): void {
     this.auth.SignOut();
+  }
+
+  getUrl(post: Post) {
+    return 'url(\'' + post.postedBy.photoURL + '\')';
   }
 }

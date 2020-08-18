@@ -13,17 +13,19 @@ import { UserService } from '../../shared/user.service';
 export class ProfileSuggestionsComponent implements OnInit {
   users: User[];
   randomUser: User;
+  currentUser: User;
 
   constructor(private firebase: FirebaseService, private router: Router, private userService: UserService) {
-    this.firebase.getUsers()
-        .subscribe(data => {
-          this.users = data;
-          this.generateRandomUser()
-          console.log(this.users);
-        });
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit(): void {
+    this.firebase.getUsers()
+        .subscribe(data => {
+          this.users = data;
+          this.removeCurrentUser();
+          this.generateRandomUser();
+        });
   }
 
   generateRandomUser(): void {
@@ -35,5 +37,12 @@ export class ProfileSuggestionsComponent implements OnInit {
     console.log(rUser);
     this.userService.setUser(rUser);
     this.router.navigate(['user-profile']);
+  }
+
+  private removeCurrentUser() {
+    if (!this.currentUser) { return; }
+
+    const index = this.users.findIndex(data => data.uid === this.currentUser.uid);
+    if (index !== -1) { this.users.splice(index, 1); }
   }
 }

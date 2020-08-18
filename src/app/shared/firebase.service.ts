@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { User } from './user';
 import { Post } from './post';
 import { Comment } from './comment';
+import { Friend } from './friend';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,6 @@ export class FirebaseService {
   }
 
   addPost(post: Post): Promise<any> {
-    console.log(post);
     return  this.firestore
         .collection('posts')
         .doc(post.id)
@@ -53,7 +53,7 @@ export class FirebaseService {
       return this.firestore
           .collection('posts')
           .doc(postId)
-          .set(post);
+          .set(post, {merge: true});
     });
   }
 
@@ -74,5 +74,29 @@ export class FirebaseService {
       photoURL: currentUser.photoURL
     };
     return this.firestore.collection('users').doc(currentUser.uid).update(update);
+  }
+
+  addFriend(userId, user: User): Promise<any> {
+    let currentUser: User;
+    const friend: Friend = {
+      uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      email: user.email
+    };
+    return new Promise( (resolve, reject) => {
+      this.firestore.collection('users').doc(userId).get().subscribe(data => {
+        currentUser = data.data() as User;
+        currentUser.friends.push(friend);
+
+        this.firestore
+            .collection('users')
+            .doc(userId)
+            .set(currentUser, {merge: true})
+            .then(d => {
+              resolve(d);
+            }).catch(e => reject(e));
+      });
+    });
   }
 }

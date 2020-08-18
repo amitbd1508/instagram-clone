@@ -5,6 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { FirebaseService } from './firebase.service';
+import { UserService } from './user.service';
+import { user } from 'firebase-functions/lib/providers/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,7 @@ export class AuthService {
       public afAuth: AngularFireAuth, // Inject Firebase auth service
       private firebaseService: FirebaseService,
       public router: Router,
+      private userSvc: UserService,
       public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
   }
@@ -56,7 +59,7 @@ export class AuthService {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            this.router.navigate(['home']);
+            this.router.navigate(['sign-in']);
           });
           this.SendVerificationMail();
           this.SetUserData(result.user, name);
@@ -108,7 +111,8 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName ? user.displayName : userName,
-      photoURL: user.photoURL,
+      photoURL: user.photoURL ? user.photoURL : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
+      friends: [],
       emailVerified: true,
       createdAt: Date.now(),
     };
@@ -139,5 +143,10 @@ export class AuthService {
 
   gotToHome() {
     this.router.navigate(['home']);
+  }
+
+  goToUserProfile(postedBy: User) {
+    this.userSvc.setUser(postedBy);
+    this.router.navigate(['user-profile']);
   }
 }

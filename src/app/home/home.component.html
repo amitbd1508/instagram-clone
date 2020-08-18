@@ -1,14 +1,7 @@
 <div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
 
   <div fxFlex="25" fxFlex.xs="25">
-
-      <mat-card>
-          <mat-card-header>
-              Left-section
-          </mat-card-header>
-
-      </mat-card>
-
+      <app-friend-list></app-friend-list>
   </div>
 
   <div fxFlex="50">
@@ -23,8 +16,8 @@
         <mat-card>
             <mat-card-header style="justify-content: center;">
                 <mat-card style="width: 100%">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-header (click)="auth.goToUserProfile(post.postedBy)">
+                        <img mat-card-avatar class="example-header-image" src="{{post.postedBy.photoURL}}" alt="Image">
                         <mat-card-title>{{post.postedBy.displayName? post.postedBy.displayName : post.postedBy.uid}}</mat-card-title>
                         <mat-card-subtitle>{{post.postedBy.email}}</mat-card-subtitle>
                     </mat-card-header>
