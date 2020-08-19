@@ -1,34 +1,28 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" *ngIf="users && users.length>0">
-    <div class="inner-adjust">
-
-        <div class="border-bottom">
-            <h3 class="h2">Suggested User</h3>
-        </div>
+<mat-card *ngIf="users && users.length>0" style="justify-content: center">
+    <mat-card-content style="justify-content: center">
+        <mat-card-title>Suggested User</mat-card-title>
         <!-- Show user data when logged in -->
-        <div class="row">
-            <div class="col-md-12">
-                <mat-card>
-                    <div class="media"  (click)="goToUserProfile(randomUser)">
-                        <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(randomUser.photoURL) ? randomUser.photoURL : '/assets/dummy-user.png'}}"
-                             alt="{{randomUser.displayName}}">
+        <mat-card style="justify-content: center">
+            <div id="over" (click)="goToUserProfile(randomUser)" >
+                <img class=" rounded-circle"
+                     src="{{(randomUser.photoURL) ? randomUser.photoURL : '/assets/dummy-user.png'}}"
+                     alt="{{randomUser.displayName}}">
 
-                    </div>
-                    <mat-card-header>
-                        <mat-card-title>
-                            <strong>{{randomUser.displayName}}</strong>
-                        </mat-card-title>
-                        <mat-card-subtitle>
-                            <strong>{{randomUser.email}}</strong>
-                        </mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-header>
-                        <button mat-button (click)="generateRandomUser()">
-                            Next
-                        </button>
-                    </mat-card-header>
-                </mat-card>
             </div>
-        </div>
+            <mat-card-header style="justify-content: center">
+                <mat-card-title>
+                    <strong>{{randomUser.displayName}}</strong>
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <strong>{{randomUser.email}}</strong>
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-header style="justify-content: center">
+                <button mat-button (click)="generateRandomUser()">
+                    <fa-icon [icon]="faArrowAltCircleRight"></fa-icon>
+                </button>
+            </mat-card-header>
+        </mat-card>
+    </mat-card-content>
 
-    </div>
-</main>
+</mat-card>

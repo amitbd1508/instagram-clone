@@ -3,6 +3,7 @@ import { FirebaseService } from '../../shared/firebase.service';
 import { User } from '../../shared/user';
 import { user } from 'firebase-functions/lib/providers/auth';
 import { Router } from '@angular/router';
+import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from '../../shared/user.service';
 
 @Component({
@@ -14,9 +15,11 @@ export class ProfileSuggestionsComponent implements OnInit {
   users: User[];
   randomUser: User;
   currentUser: User;
+  faArrowAltCircleRight;
 
   constructor(private firebase: FirebaseService, private router: Router, private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.faArrowAltCircleRight = faArrowAltCircleRight;
   }
 
   ngOnInit(): void {
