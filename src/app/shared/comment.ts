@@ -1,7 +1,7 @@
-import { User } from './user';
+import { LightUser } from './light-user';
 
 export interface Comment {
   message: string;
-  postedBy: User;
+  postedBy: LightUser;
   createdAt: number;
 }

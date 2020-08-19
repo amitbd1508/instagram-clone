@@ -10,7 +10,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path: 'home', component: HomeComponent },
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'sign-in', component: SignInComponent },
   { path: 'register-user', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

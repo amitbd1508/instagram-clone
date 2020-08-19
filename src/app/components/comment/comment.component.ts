@@ -4,6 +4,7 @@ import { User } from '../../shared/user';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Comment } from '../../shared/comment';
+import { LightUser } from '../../shared/light-user';
 
 @Component({
   selector: 'app-comment',
@@ -16,7 +17,7 @@ export class CommentComponent implements OnInit {
   message = '';
   disable: boolean;
 
-  @Input() postId: string;
+  @Input() uid: string;
 
   constructor(private firebase: FirebaseService, private toastr: ToastrService, private  router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
@@ -46,9 +47,10 @@ export class CommentComponent implements OnInit {
     const comment: Comment = {
       message: this.message,
       createdAt: Date.now(),
-      postedBy: this.currentUser
+      postedBy: this.currentUser as LightUser
     };
 
-    this.firebase.addComment(this.postId, comment);
+    this.firebase.addComment(this.uid, comment);
+    this.message = null;
   }
 }

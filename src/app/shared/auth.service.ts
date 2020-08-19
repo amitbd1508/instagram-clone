@@ -37,7 +37,6 @@ export class AuthService {
         .then((result) => {
           this.firebaseService.getUserById(result.user.uid)
               .subscribe(currentUser => {
-                console.log('=======', currentUser);
                 this.userData = currentUser;
                 localStorage.setItem('user', JSON.stringify(this.userData));
                 JSON.parse(localStorage.getItem('user'));
@@ -106,10 +105,10 @@ export class AuthService {
 
   SetUserData(user, userName?) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    console.log(user.displayName, userName);
     const currentUser: User = {
       uid: user.uid,
       email: user.email,
+      comments: [],
       displayName: user.displayName ? user.displayName : userName,
       photoURL: user.photoURL ? user.photoURL : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
       friends: [],

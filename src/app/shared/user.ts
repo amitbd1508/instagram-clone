@@ -1,4 +1,5 @@
 import { Friend } from './friend';
+import { Comment } from './comment';
 
 export interface User {
   uid: string;
@@ -6,6 +7,7 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
-  friends: Friend[],
+  friends: Friend[];
+  comments: Comment[];
   createdAt: number;
 }

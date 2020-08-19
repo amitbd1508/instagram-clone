@@ -44,16 +44,16 @@ export class FirebaseService {
     return this.firestore.createId();
   }
 
-  addComment(postId: string, comment: Comment) {
-    let post: Post;
-    this.firestore.collection('posts').doc(postId).get().subscribe(data => {
-      post = data.data() as Post;
-      post.comments.push(comment);
+  addComment(uid: string, comment: Comment) {
+    let user: User;
+    return this.firestore.collection('users').doc(uid).get().subscribe(data => {
+      user = data.data() as User;
+      user.comments.push(comment);
 
       return this.firestore
-          .collection('posts')
-          .doc(postId)
-          .set(post, {merge: true});
+          .collection('users')
+          .doc(uid)
+          .set(user, {merge: true});
     });
   }
 

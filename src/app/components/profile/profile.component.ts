@@ -69,6 +69,7 @@ export class ProfileComponent implements OnInit {
               this.downloadURL.subscribe(url => {
                 if (url) {
                   this.fb = url;
+                  this.currentUser.photoURL = url;
                   this.firebaseService.updateUser(this.currentUser)
                       .then(data => {
                         this.loading = false;
