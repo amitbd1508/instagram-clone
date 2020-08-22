@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FirebaseService } from '../../shared/firebase.service';
+import { User } from '../../shared/user';
+import { Friend } from '../../shared/friend';
 
 @Component({
   selector: 'app-chat',
@@ -7,15 +10,22 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  chatForm: any;
   message: string;
+  friends: Friend[];
+  currentUser: User;
+  divClass: string;
+  idx = 0;
 
-  constructor() { }
+  constructor(private firebaseSvc: FirebaseService) {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+  }
 
   ngOnInit(): void {
-    this.chatForm = new FormGroup({
-      message: new FormControl()
-    });
+    this.divClass = 'ui-g';
+    this.firebaseSvc.getUserById(this.currentUser.uid)
+        .subscribe(user => {
+          this.friends = user.friends;
+        });
   }
 
   onFormSubmit(value: any) {
@@ -23,6 +33,11 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    
+    this.message = null;
+  }
+
+  onSelectChatUser(user: Friend, ind) {
+    this.idx = ind;
+    this.divClass = 'selected';
   }
 }
