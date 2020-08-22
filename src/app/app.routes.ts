@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,4 +18,5 @@ export const ROUTES: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user-profile', component: UserProfileComponent },
+  { path: 'chat', component: ChatComponent },
 ];

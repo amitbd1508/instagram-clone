@@ -36,6 +36,8 @@ import { ProfileSuggestionsComponent } from './components/profile-suggestions/pr
 import { AdvertisementComponent } from './components/advertisement/advertisement.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FriendListComponent } from './components/friend-list/friend-list.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -63,7 +65,8 @@ const firebaseConfig = {
     ProfileSuggestionsComponent,
     AdvertisementComponent,
     UserProfileComponent,
-    FriendListComponent
+    FriendListComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ const firebaseConfig = {
     FormsModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
