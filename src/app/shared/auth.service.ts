@@ -103,19 +103,18 @@ export class AuthService {
         });
   }
 
-  SetUserData(user, userName?) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+  SetUserData(loggedInUser, userName?) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${loggedInUser.uid}`);
     const currentUser: User = {
-      uid: user.uid,
-      email: user.email,
+      uid: loggedInUser.uid,
+      email: loggedInUser.email,
       comments: [],
-      displayName: user.displayName ? user.displayName : userName,
-      photoURL: user.photoURL ? user.photoURL : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
+      displayName: loggedInUser.displayName ? loggedInUser.displayName : userName,
+      photoURL: loggedInUser.photoURL ? loggedInUser.photoURL : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
       friends: [],
       emailVerified: true,
       createdAt: Date.now(),
     };
-    console.log(currentUser);
     return userRef.set(currentUser, {
       merge: true
     });

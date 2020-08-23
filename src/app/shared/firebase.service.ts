@@ -6,6 +6,7 @@ import { User } from './user';
 import { Post } from './post';
 import { Comment } from './comment';
 import { Friend } from './friend';
+import { Chat } from './chat';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,13 @@ export class FirebaseService {
 
   public usersCollectionRef: any;
   public usersCollection: any;
+  public chatCollectionRef = this.firestore.collection('chat');
   private user: User;
 
   constructor(private firestore: AngularFirestore) {
     this.postsCollectionRef = this.firestore.collection<Post>('posts', ref => ref.orderBy('createdAt', 'desc'));
     this.usersCollectionRef = this.firestore.collection<User>('users');
+    this.chatCollectionRef = this.firestore.collection<User>('chat');
     this.postsCollection = this.postsCollectionRef.valueChanges().pipe(shareReplay(1));
     this.usersCollection = this.usersCollectionRef.valueChanges().pipe(shareReplay(1));
   }
@@ -98,5 +101,21 @@ export class FirebaseService {
             }).catch(e => reject(e));
       });
     });
+  }
+
+  getChatId(uid: string, uid2: string) {
+    if (uid.localeCompare(uid2) === -1) { return `${uid}-${uid2}`; }
+    else { return `${uid2}-${uid2}`; }
+  }
+
+  getChatMessages(chatId: string): Observable<Chat[]> {
+    return this.firestore
+        .collection<Chat>('chat', ref => {
+          return ref.where('chatId', '==', chatId).orderBy('createdAt', 'asc');
+        }).valueChanges();
+  }
+
+  sendMessage(chat: Chat): Promise<any> {
+    return  this.firestore.collection('chat').add(chat);
   }
 }

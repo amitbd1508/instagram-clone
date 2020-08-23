@@ -2,12 +2,12 @@
     <mat-drawer-container class="drawer-container">
         <mat-drawer mode="side" opened class="left-drawer">
             <div class="users-pane">
-                <mat-card class="users-card">
-                    <button type="button" mat-button matSuffix mat-icon-button aria-label="Exit">
-                        <mat-icon>logout</mat-icon>
+                <mat-card class="users-card" (click)="goToHome()">
+                    <button type="button" mat-button matSuffix mat-icon-button aria-label="Home">
+                        <mat-icon>home</mat-icon>
                     </button>
                 </mat-card>
-                <mat-card class="users-card" [class]="divClass" *ngFor="let user of friends;let i=index" (click)="onSelectChatUser(user, i)" [ngClass]="{'selected':user[i] == i}">
+                <mat-card class="users-card" *ngFor="let user of friends;let i=index" (click)="onSelectChatUser(user, i)">
                     <mat-icon *ngIf="idx === i">drafts</mat-icon>
                     <img style="width: 20px; height: 20px" src="{{user.photoURL}}">
                     <span class="username">{{user.displayName}}</span>
@@ -16,17 +16,17 @@
         </mat-drawer>
         <mat-drawer-content class="chat-pane">
             <div #chatcontent [scrollTop]="true" class="chat-content">
-                <div class="message-box" *ngFor="let chat of [{date: '2000-08-15', nickname: 'amit', message: 'Test message'}, { nickname: 'tom', date: '2000-08-15', message: 'Test message'}]">
+                <div class="message-box" *ngFor="let chat of chatMessages">
                     <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
                         <span class="chat-date">{{chat.date}</span>
                         <span class="chat-content-center">{{chat.message}}</span>
                     </div>
                     <ng-template #message>
                         <div class="chat-message">
-                            <div class="right-bubble" [ngClass]="{'right-bubble': chat.nickname === 'amit', 'left-bubble': chat.nickname !== 'amit'}">
-                                <span class="msg-name" *ngIf="chat.nickname === 'amit'">Me</span>
-                                <span class="msg-name" *ngIf="chat.nickname !== 'amit'">{{chat.nickname}}</span>
-                                <span class="msg-date"> at {{chat.date}}</span>
+                            <div class="right-bubble" [ngClass]="{'right-bubble': chat.sender.displayName === currentUser.displayName, 'left-bubble': chat.sender.displayName !== currentUser.displayName}">
+                                <span class="msg-name" *ngIf="chat.sender.displayName === currentUser.displayName">Me</span>
+                                <span class="msg-name" *ngIf="chat.sender.displayName !== currentUser.displayName">{{chat.sender.displayName}}</span>
+                                <span class="msg-date"> at {{chat.createdAt}}</span>
                                 <p text-wrap>{{chat.message}}</p>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                 <mat-card class="message-form">
                     <mat-form-field class="message-form-field">
                         <label>
-                            <input matInput placeholder="Enter message here" [(ngModel)]="message">
+                            <input matInput placeholder="Enter message here" [(ngModel)]="message" (keyup.enter)="sendMessage()">
                         </label>
                         <mat-error>
                             <span>Enter your message</span>
@@ -51,3 +51,4 @@
         </mat-drawer-content>
     </mat-drawer-container>
 </div>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
