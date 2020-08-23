@@ -15,7 +15,6 @@ import { user } from 'firebase-functions/lib/providers/auth';
 })
 export class ChatComponent implements OnInit {
   message: string;
-  friends: Friend[];
   currentUser: User;
   idx = 0;
   chatMessages: Chat[];
@@ -29,19 +28,18 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.currentUser || !this.selectedFriend) {
+      this.router.navigate(['home']);
+    }
     this.loading = true;
-    this.getAllMessage(this.currentUser, this.selectedFriend);
-  }
-
-  getAllMessage(currentUser: User, friend: Friend) {
-    this.currentChatId = this.firebaseSvc.getChatId(currentUser.uid, friend.uid);
+    this.currentChatId = this.firebaseSvc.getChatId(this.currentUser.uid, this.selectedFriend.uid);
+    console.log(this.currentChatId);
     this.firebaseSvc.getChatMessages(this.currentChatId)
         .subscribe(data => {
           this.chatMessages = data;
           console.log(this.chatMessages);
           this.loading = false;
         });
-
   }
 
   sendMessage() {
@@ -60,13 +58,6 @@ export class ChatComponent implements OnInit {
           console.log(data);
         });
     this.message = null;
-  }
-
-  onSelectChatUser(user: Friend, ind) {
-    this.idx = ind;
-    this.selectedFriend = user;
-    this.loading = true;
-    this.getAllMessage(this.currentUser, this.selectedFriend);
   }
 
   goToHome() {

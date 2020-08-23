@@ -105,7 +105,7 @@ export class FirebaseService {
 
   getChatId(uid: string, uid2: string) {
     if (uid.localeCompare(uid2) === -1) { return `${uid}-${uid2}`; }
-    else { return `${uid2}-${uid2}`; }
+    else { return `${uid2}-${uid}`; }
   }
 
   getChatMessages(chatId: string): Observable<Chat[]> {

@@ -5,12 +5,12 @@
                 <mat-card class="users-card" (click)="goToHome()">
                     <button type="button" mat-button matSuffix mat-icon-button aria-label="Home">
                         <mat-icon>home</mat-icon>
+                        <span> Back to home</span>
                     </button>
                 </mat-card>
-                <mat-card class="users-card" *ngFor="let user of friends;let i=index" (click)="onSelectChatUser(user, i)">
-                    <mat-icon *ngIf="idx === i">drafts</mat-icon>
-                    <img style="width: 20px; height: 20px" src="{{user.photoURL}}">
-                    <span class="username">{{user.displayName}}</span>
+                <mat-card class="users-card">
+                    <img style="width: 20px; height: 20px" src="{{selectedFriend.photoURL}}">
+                    <span class="username">{{selectedFriend.displayName}}</span>
                 </mat-card>
             </div>
         </mat-drawer>
