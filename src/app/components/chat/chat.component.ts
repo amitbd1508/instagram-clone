@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FirebaseService } from '../../shared/firebase.service';
 import { User } from '../../shared/user';
@@ -7,13 +7,17 @@ import { Router } from '@angular/router';
 import { Chat } from '../../shared/chat';
 import { UserService } from '../../shared/user.service';
 import { user } from 'firebase-functions/lib/providers/auth';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked  {
+  @ViewChild('chatcontent') private chatcontent: ElementRef;
+
+  moment: any = moment;
   message: string;
   currentUser: User;
   idx = 0;
@@ -39,6 +43,7 @@ export class ChatComponent implements OnInit {
           this.chatMessages = data;
           console.log(this.chatMessages);
           this.loading = false;
+          this.scrollToBottom();
         });
   }
 
@@ -62,5 +67,15 @@ export class ChatComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['home']);
+  }
+
+  scrollToBottom = () => {
+    try {
+      this.chatcontent.nativeElement.scrollTop = this.chatcontent.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
+
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
   }
 }

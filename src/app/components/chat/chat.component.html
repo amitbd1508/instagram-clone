@@ -26,12 +26,14 @@
                             <div class="right-bubble" [ngClass]="{'right-bubble': chat.sender.displayName === currentUser.displayName, 'left-bubble': chat.sender.displayName !== currentUser.displayName}">
                                 <span class="msg-name" *ngIf="chat.sender.displayName === currentUser.displayName">Me</span>
                                 <span class="msg-name" *ngIf="chat.sender.displayName !== currentUser.displayName">{{chat.sender.displayName}}</span>
-                                <span class="msg-date"> at {{chat.createdAt}}</span>
+                                <span class="msg-date"> at {{moment(chat.createdAt).fromNow()}}</span>
                                 <p text-wrap>{{chat.message}}</p>
                             </div>
                         </div>
                     </ng-template>
                 </div>
+            </div>
+            <div>
             </div>
             <footer class="sticky-footer">
                 <mat-card class="message-form">

@@ -18,10 +18,7 @@
       "**/node_modules/**"
     ]
   },
-  "rewrites": [{
-    "source": "/public/**",
-    "destination": "/public.html"
-  },
+  "rewrites": [
     {
       "source": "**",
       "destination": "/index.html"
