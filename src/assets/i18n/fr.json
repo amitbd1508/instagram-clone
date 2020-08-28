@@ -1,0 +1,19 @@
+{
+  "home": {
+    "switch_to_another_profile_text": "Cliques sur la fusee pour atterrir sur la page d'un autre profil (aleatoire) "
+  },
+  "profile-suggestions": {
+    "suggested-user": "Suggestion utilisateur"
+  },
+  "friend-list": {
+    "my-subscriptions": "Mes abonnements"
+  },
+  "comment": {
+    "comment": "Commentaire",
+    "add-comment": "ajoutes un commentaire",
+    "publish": "Publier"
+  },
+  "advertisement": {
+    "advertisement": "Publicite"
+  }
+}

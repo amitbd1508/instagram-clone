@@ -1,5 +1,5 @@
 <mat-card *ngIf="friends && friends.length>0">
-    <mat-card-title> Friends </mat-card-title>
+    <mat-card-title [translate]="'friend-list.my-subscriptions'"> MY SUBSCRIPTIONS </mat-card-title>
     <div class="inboxContainer">
         <mat-card *ngFor="let friend of friends" >
             <mat-card-header>

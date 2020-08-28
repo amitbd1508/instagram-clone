@@ -38,6 +38,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { FriendListComponent } from './components/friend-list/friend-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -71,6 +74,14 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     AngularFirestoreModule,
     AngularFireAuthModule,
     RouterModule.forRoot(ROUTES),
@@ -97,4 +108,8 @@ const firebaseConfig = {
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

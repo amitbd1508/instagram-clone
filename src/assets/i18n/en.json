@@ -1,0 +1,19 @@
+{
+  "home": {
+    "switch_to_another_profile_text": "Click on the rocket to switch another profile(Random)"
+  },
+  "profile-suggestions": {
+    "suggested-user": "Suggested User"
+  },
+  "friend-list": {
+    "my-subscriptions": "MY SUBSCRIPTIONS"
+  },
+  "comment": {
+    "comment": "Comment",
+    "add-comment": "Add Comment",
+    "publish": "Publish"
+  },
+  "advertisement": {
+    "advertisement": "Advertisement"
+  }
+}
