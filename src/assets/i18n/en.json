@@ -15,5 +15,8 @@
   },
   "advertisement": {
     "advertisement": "Advertisement"
+  },
+  "search": {
+    "quick-search": "Quick Search"
   }
 }
