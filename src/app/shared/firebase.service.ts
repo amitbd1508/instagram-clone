@@ -6,7 +6,6 @@ import { User } from './user';
 import { Post } from './post';
 import { Comment } from './comment';
 import { Friend } from './friend';
-import { Chat } from './chat';
 
 @Injectable({
   providedIn: 'root'
@@ -101,21 +100,5 @@ export class FirebaseService {
             }).catch(e => reject(e));
       });
     });
-  }
-
-  getChatId(uid: string, uid2: string) {
-    if (uid.localeCompare(uid2) === -1) { return `${uid}-${uid2}`; }
-    else { return `${uid2}-${uid}`; }
-  }
-
-  getChatMessages(chatId: string): Observable<Chat[]> {
-    return this.firestore
-        .collection<Chat>('chat', ref => {
-          return ref.where('chatId', '==', chatId).orderBy('createdAt', 'asc');
-        }).valueChanges();
-  }
-
-  sendMessage(chat: Chat): Promise<any> {
-    return  this.firestore.collection('chat').add(chat);
   }
 }

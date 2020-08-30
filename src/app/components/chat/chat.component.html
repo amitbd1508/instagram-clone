@@ -8,9 +8,10 @@
                         <span> Back to home</span>
                     </button>
                 </mat-card>
-                <mat-card class="users-card">
-                    <img style="width: 20px; height: 20px" src="{{selectedFriend.photoURL}}">
-                    <span class="username">{{selectedFriend.displayName}}</span>
+                <mat-card class="users-card" [class]="divClass" *ngFor="let user of chatUsers;let i=index" (click)="onSelectChatUser(user, i)" [ngClass]="{'selected':user[i] === i}">
+                    <mat-icon *ngIf="idx === i">drafts</mat-icon>
+                    <img style="width: 20px; height: 20px" src="{{user.photoURL}}">
+                    <span class="username">{{user.displayName}}</span>
                 </mat-card>
             </div>
         </mat-drawer>
