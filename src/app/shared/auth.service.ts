@@ -147,4 +147,8 @@ export class AuthService {
     this.userSvc.setUser(postedBy);
     this.router.navigate(['user-profile']);
   }
+
+  gotToChat() {
+    this.router.navigate(['chat']);
+  }
 }

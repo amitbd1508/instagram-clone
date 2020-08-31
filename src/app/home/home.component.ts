@@ -68,4 +68,8 @@ export class HomeComponent implements OnInit {
     const index = this.users.findIndex(data => data.uid === this.currentUser.uid);
     if (index !== -1) { this.users.splice(index, 1); }
   }
+
+  gotToChat() {
+    this.auth.gotToChat();
+  }
 }

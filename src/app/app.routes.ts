@@ -12,11 +12,11 @@ import { ChatComponent } from './components/chat/chat.component';
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-in', component: SignInComponent},
   { path: 'register-user', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
 ];
