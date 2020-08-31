@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   moment: any = moment;
   message: string;
   currentUser: User;
-  idx = 0;
+  idx = -1;
   chatMessages: Chat[];
   selectedFriend: Friend;
   currentChatId;
@@ -121,7 +121,6 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
     this.currentChatId = this.chatService.getChatId(this.currentUser.uid, this.selectedFriend.uid);
 
     this.loading = true;
-    console.log(this.currentChatId);
     this.chatService.getChatMessages(this.currentChatId)
         .subscribe(data => {
           this.chatMessages = data;

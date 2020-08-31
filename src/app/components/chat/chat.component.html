@@ -9,13 +9,13 @@
                     </button>
                 </mat-card>
                 <mat-card class="users-card" [class]="divClass" *ngFor="let user of chatUsers;let i=index" (click)="onSelectChatUser(user, i)" [ngClass]="{'selected':user[i] === i}">
-                    <mat-icon *ngIf="idx === i">drafts</mat-icon>
+                    <mat-icon *ngIf="idx === i">send</mat-icon>
                     <img style="width: 20px; height: 20px" src="{{user.photoURL}}">
                     <span class="username">{{user.displayName}}</span>
                 </mat-card>
             </div>
         </mat-drawer>
-        <mat-drawer-content class="chat-pane">
+        <mat-drawer-content *ngIf="selectedFriend" class="chat-pane">
             <div #chatcontent [scrollTop]="true" class="chat-content">
                 <div class="message-box" *ngFor="let chat of chatMessages">
                     <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
@@ -52,6 +52,21 @@
                 </mat-card>
             </footer>
         </mat-drawer-content>
+
+        <mat-drawer-content *ngIf="!selectedFriend" style="justify-content: center" class="chat-pane">
+            <div style="position: relative">
+                <div style="position: absolute;  margin-top: 25%; left: 25%; width: 100%">
+                    <div style="margin-left: 50px; height: 100px; width: 100px; background-image: url('/assets/icons/YourMessages.svg')"></div>
+                    <div style="margin-left: 30px">
+                        <h2>Your Messages</h2>
+                    </div>
+                    <div style="margin-left: 10px">
+                        <h4>Send private messages to a friend</h4>
+                    </div>
+                </div>
+            </div>
+        </mat-drawer-content>
+
     </mat-drawer-container>
 </div>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
