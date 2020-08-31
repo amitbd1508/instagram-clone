@@ -7,6 +7,8 @@ import { faHeart, faComment, faPaperPlane, faArrowAltCircleRight } from '@fortaw
 import { Post } from '../shared/post';
 import { AuthService } from '../shared/auth.service';
 import { User } from '../shared/user';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { LanguageChangeComponent } from '../components/language-change/language-change.component';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +25,8 @@ export class HomeComponent implements OnInit {
   counter = 0;
   currentUser: User;
 
-  constructor(private firebase: FirebaseService, public  auth: AuthService) {
+  constructor(private firebase: FirebaseService, public  auth: AuthService, private modalService: NgbModal,
+  ) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
 
     this.faHeart = faHeart;
@@ -62,14 +65,25 @@ export class HomeComponent implements OnInit {
     return 'url(\'' + post.postedBy.photoURL + '\')';
   }
 
-  private removeCurrentUser() {
-    if (!this.currentUser) { return; }
-
-    const index = this.users.findIndex(data => data.uid === this.currentUser.uid);
-    if (index !== -1) { this.users.splice(index, 1); }
-  }
-
   gotToChat() {
     this.auth.gotToChat();
+  }
+
+  changeLanguage() {
+    const modalRef = this.modalService.open(LanguageChangeComponent);
+    modalRef.componentInstance.language = 'fr';
+    modalRef.result.then((data) => {
+    });
+  }
+
+  private removeCurrentUser() {
+    if (!this.currentUser) {
+      return;
+    }
+
+    const index = this.users.findIndex(data => data.uid === this.currentUser.uid);
+    if (index !== -1) {
+      this.users.splice(index, 1);
+    }
   }
 }

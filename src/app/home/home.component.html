@@ -39,6 +39,13 @@
   </div>
   <div fxFlex="25" fxFlex.xs="25">
       <br>
+      <mat-card>
+          <mat-card-header (click)="gotToChat()">Go to Chat</mat-card-header>
+      </mat-card>
+      <mat-card>
+          <mat-card-header (click)="changeLanguage()">Change Language</mat-card-header>
+      </mat-card>
+      <br>
       <br>
       <mat-card (click)="nextUser()">
           <mat-card-header>
@@ -54,10 +61,6 @@
       <br>
       <br>
       <app-advertisement></app-advertisement>
-      <br>
-      <mat-card>
-          <mat-card-header (click)="gotToChat()">Go to Chat</mat-card-header>
-      </mat-card>
   </div>
 
 </div>

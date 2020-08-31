@@ -41,6 +41,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LanguageChangeComponent } from './components/language-change/language-change.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -69,7 +71,8 @@ const firebaseConfig = {
     AdvertisementComponent,
     UserProfileComponent,
     FriendListComponent,
-    ChatComponent
+    ChatComponent,
+    LanguageChangeComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +105,8 @@ const firebaseConfig = {
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -112,6 +112,7 @@ export class AuthService {
       displayName: loggedInUser.displayName ? loggedInUser.displayName : userName,
       photoURL: loggedInUser.photoURL ? loggedInUser.photoURL : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
       friends: [],
+      language: 'en',
       emailVerified: true,
       createdAt: Date.now(),
     };

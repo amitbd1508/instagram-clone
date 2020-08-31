@@ -9,5 +9,6 @@ export interface User {
   emailVerified: boolean;
   friends: Friend[];
   comments: Comment[];
+  language: string;
   createdAt: number;
 }
