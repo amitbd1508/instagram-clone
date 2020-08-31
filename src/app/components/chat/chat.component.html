@@ -3,10 +3,9 @@
         <mat-drawer mode="side" opened class="left-drawer">
             <div class="users-pane">
                 <mat-card class="users-card" (click)="goToHome()">
-                    <button type="button" mat-button matSuffix mat-icon-button aria-label="Home">
-                        <mat-icon>home</mat-icon>
-                        <span> Back to home</span>
-                    </button>
+                    <mat-card-header>
+                        <h3>Messages</h3>
+                    </mat-card-header>
                 </mat-card>
                 <mat-card class="users-card" [class]="divClass" *ngFor="let user of chatUsers;let i=index" (click)="onSelectChatUser(user, i)" [ngClass]="{'selected':user[i] === i}">
                     <mat-icon *ngIf="idx === i">send</mat-icon>

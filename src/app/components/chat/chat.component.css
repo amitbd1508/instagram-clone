@@ -12,7 +12,7 @@
 }
 
 .left-drawer {
-    width: 200px;
+    width: 300px;
 }
 
 .users-pane {
@@ -40,7 +40,7 @@ footer.sticky-footer {
 }
 
 .message-form {
-    margin-left: 200px;
+    margin-left: 300px;
 }
 
 .message-form-field {
