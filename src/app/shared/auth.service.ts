@@ -152,4 +152,8 @@ export class AuthService {
   gotToChat() {
     this.router.navigate(['chat']);
   }
+
+  goToSettingPage() {
+    this.router.navigate(['setting']);
+  }
 }

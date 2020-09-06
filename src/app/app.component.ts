@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
 
   constructor(public authService: AuthService, private translate: TranslateService) {
-    translate.setDefaultLang('fr');
+    translate.setDefaultLang('en');
   }
 
   title = 'OP SCIENCES PVT';

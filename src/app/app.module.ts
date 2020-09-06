@@ -43,6 +43,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageChangeComponent } from './components/language-change/language-change.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -72,7 +73,8 @@ const firebaseConfig = {
     UserProfileComponent,
     FriendListComponent,
     ChatComponent,
-    LanguageChangeComponent
+    LanguageChangeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -5,3 +5,8 @@
 .small-spacer {
     flex: 1 4 auto;
 }
+
+.toolbar {
+    background: #303030;
+    color: #F7FAFC;
+}

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar">
   <span class="mt-4" (click)="authService.gotToHome()">
     <label>OP SCIENCES PVT</label>
   </span>
@@ -10,6 +10,10 @@
   </button>
   <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignIn()">
     Login
+  </button>
+
+  <button (click)="authService.goToSettingPage()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
+    <img src="/assets/icons/setting.svg">
   </button>
 
   <button mat-icon-button *ngIf="authService.isLoggedIn" (click)="authService.goToProfile()">

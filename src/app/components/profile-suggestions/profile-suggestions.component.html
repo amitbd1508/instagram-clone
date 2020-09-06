@@ -1,10 +1,10 @@
-<mat-card *ngIf="users && users.length>0" style="justify-content: center">
+<mat-card *ngIf="users && users.length>0" style="justify-content: center; background: #F7F8F8">
     <mat-card-content style="justify-content: center">
         <mat-card-title [translate]="'profile-suggestions.suggested-user'">Suggested User</mat-card-title>
         <!-- Show user data when logged in -->
-        <mat-card style="justify-content: center">
+        <mat-card style="justify-content: center; background: #F7F8F8">
             <div id="over" (click)="goToUserProfile(randomUser)" >
-                <img class=" rounded-circle"
+                <img class="rounded-circle"
                      src="{{(randomUser.photoURL) ? randomUser.photoURL : '/assets/dummy-user.png'}}"
                      alt="{{randomUser.displayName}}">
 

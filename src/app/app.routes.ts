@@ -8,15 +8,17 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 export const ROUTES: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'sign-in', component: SignInComponent},
-  { path: 'register-user', component: SignUpComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard] },
+  {path: 'sign-in', component: SignInComponent},
+  {path: 'register-user', component: SignUpComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'verify-email-address', component: VerifyEmailComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+  {path: 'setting', component: SettingsComponent, canActivate: [AuthGuard]},
 ];
