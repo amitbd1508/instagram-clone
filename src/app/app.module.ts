@@ -45,6 +45,7 @@ import { LanguageChangeComponent } from './components/language-change/language-c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PostComponent } from './components/post/post.component';
+import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -76,7 +77,8 @@ const firebaseConfig = {
     ChatComponent,
     LanguageChangeComponent,
     SettingsComponent,
-    PostComponent
+    PostComponent,
+    UserProfileEditComponent
   ],
   imports: [
     BrowserModule,

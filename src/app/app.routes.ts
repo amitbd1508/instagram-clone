@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
 
 export const ROUTES: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,6 +19,7 @@ export const ROUTES: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'verify-email-address', component: VerifyEmailComponent},
   {path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile-edit', component: UserProfileEditComponent, canActivate: [AuthGuard]},
   {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {path: 'setting', component: SettingsComponent, canActivate: [AuthGuard]},
 ];
