@@ -5,3 +5,22 @@
     margin-top: 5%;
     margin-left: 5%;
 }
+
+.profile-button {
+    background: #F7FAFC;
+    color: #303030;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-right: 2px;
+    padding-top: 5px;
+}
+
+.profile-button-subscribe {
+    background: #E42526;
+    color: #F7FAFC;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5px;
+}
+
+

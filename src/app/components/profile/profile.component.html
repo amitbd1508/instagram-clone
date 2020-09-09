@@ -1,87 +1,91 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px" style="background: #ECF7FB">
-
-    <div fxFlex="20" fxFlex.xs="20">
-
-    </div>
-
-    <div fxFlex="60" >
-        <div fxLayout="column">
-            <div fxFlex="40" style="background: #ECF7FB">
-                <mat-card style="justify-content: left;background: #ECF7FB">
-                    <mat-card-header style="background: #ECF7FB">
-                       <div fxFlex="30">
-                           <img mat-card-avatar class="example-header-image" src="{{currentUser.photoURL}}" alt="Image">
-                       </div>
-                        <div fxFlex="50" style="margin-left: 5%">
-                            <mat-card-title>{{currentUser.displayName? currentUser.displayName : currentUser.uid}}</mat-card-title>
-                            <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>
-                            <mat-card-content>I am amit. i am a software engineer living in dhaka</mat-card-content>
-                            <mat-card-title>Software Engineer, Jeeon LLC</mat-card-title>
-                        </div>
-                        <div fxFlex="20">
-                            <mat-icon>facebook</mat-icon>
-                            <mat-icon>facebook</mat-icon>
-                            <mat-icon>facebook</mat-icon>
-                            <mat-icon>facebook</mat-icon>
-                            <br>
-                            <br>
-                            <br>
-                            <div>
-                                <button type="button" class="btn btn-outline-secondary">
-                                    <mat-icon>message</mat-icon>
-                                    Send Message
-                                </button>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <div>
-                                <mat-icon>share</mat-icon>
-                                <mat-icon>share</mat-icon>
-                                <mat-icon>share</mat-icon>
-                            </div>
-                        </div>
-                    </mat-card-header>
-
-                    <!--<div>
-                        <img [src]="selectedFileUrl? selectedFileUrl : currentUser.photoURL" height="100px">
-                    </div>
+<div fxLayout="column">
+    <div fxFlex="40" style="background: #ECF7FB">
+        <mat-card style="justify-content: left;background: #ECF7FB">
+            <mat-card-header style="background: #ECF7FB">
+                <div fxFlex="30">
+                    <img mat-card-avatar class="example-header-image" src="{{currentUser.photoURL}}" alt="Image">
+                </div>
+                <div fxFlex="50" style="margin-left: 5%">
+                    <mat-card-title>{{currentUser.displayName? currentUser.displayName : currentUser.uid}}</mat-card-title>
+                    <mat-card-subtitle>{{currentUser.email}}</mat-card-subtitle>
+                    <mat-card-content>I am amit. i am a software engineer living in dhaka</mat-card-content>
+                    <mat-card-title>Software Engineer, Jeeon LLC</mat-card-title>
+                </div>
+                <div fxFlex="20">
+                    <fa-icon size="lg" style="margin-right: 5px;" [icon]="faFacebook"></fa-icon>
+                    <fa-icon size="lg" style="margin-right: 5px;" [icon]="faInstagram"></fa-icon>
+                    <fa-icon size="lg" style="margin-right: 5px;" [icon]="faLinkedin"></fa-icon>
+                    <fa-icon size="lg" style="margin-right: 5px;" [icon]="faTwitter"></fa-icon>
+                    <br>
+                    <br>
+                    <br>
                     <div>
-                        <input type="file"
-                               id="file"
-                               #userPhoto
-                               accept="image/*"
-                               (change)="onFileSelected($event)"
-                               name="image"
-                               autocomplete="off"/>
+                        <button type="button" class="btn btn-outline-secondary">
+                            <mat-icon>message</mat-icon>
+                            Send Message
+                        </button>
                     </div>
                     <br>
-                    <mat-card-content>
-                        <p>
-                            <label>Name</label>
-                            <input type="text" name="name" [(ngModel)]="currentUser.displayName" >
-                        </p>
-                        <p>
-                            <label>Email: </label>
-                            <label>{{currentUser.email}}</label>
-                        </p>
-                    </mat-card-content>
-                    <mat-card-header style="justify-content: center">
-                        <button mat-button (click)="updateProfile()">
-                            <b>Update</b>
-                        </button>
-                    </mat-card-header>-->
-                </mat-card>
-                <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+                    <br>
+                    <br>
+                    <div>
+                        <mat-icon>share</mat-icon>
+                    </div>
+                </div>
 
-            </div>
-            <div fxFlex="60">
-                <app-comment></app-comment>
-            </div>
-        </div>
-    </div>
-    <div fxFlex="20" fxFlex.xs="20">
-    </div>
+            </mat-card-header>
+            <div>
+                <div fxFlex="40">
 
+                </div>
+                <div fxFlex="60" fxLayoutAlign="end">
+                    <button mat-button class="profile-button">
+                        <mat-card-title>450</mat-card-title>
+                        <p>Likes</p>
+                    </button>
+                    <button mat-button class="profile-button">
+                        <mat-card-title>450</mat-card-title>
+                        <p>Subscribers</p>
+                    </button>
+                    <button mat-button class="profile-button-subscribe">
+                        <mat-card-title>Subscribe</mat-card-title>
+                    </button>
+                </div>
+            </div>
+            <!--<div>
+                <img [src]="selectedFileUrl? selectedFileUrl : currentUser.photoURL" height="100px">
+            </div>
+            <div>
+                <input type="file"
+                       id="file"
+                       #userPhoto
+                       accept="image/*"
+                       (change)="onFileSelected($event)"
+                       name="image"
+                       autocomplete="off"/>
+            </div>
+            <br>
+            <mat-card-content>
+                <p>
+                    <label>Name</label>
+                    <input type="text" name="name" [(ngModel)]="currentUser.displayName" >
+                </p>
+                <p>
+                    <label>Email: </label>
+                    <label>{{currentUser.email}}</label>
+                </p>
+            </mat-card-content>
+            <mat-card-header style="justify-content: center">
+                <button mat-button (click)="updateProfile()">
+                    <b>Update</b>
+                </button>
+            </mat-card-header>-->
+        </mat-card>
+
+    </div>
+    <div fxFlex="60" fxLayoutAlign="center" style="background: #ECF7FB; margin-top: 2px; margin-bottom: 2px">
+        <mat-card style="background: #ECF7FB; width: 100%; justify-content: center">
+            <mat-card-header style="background: #ECF7FB; width: 100%; justify-content: center">About Me</mat-card-header>
+        </mat-card>
+    </div>
 </div>
-

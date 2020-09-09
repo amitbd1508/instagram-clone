@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit {
   currentUser: User;
   disable: boolean;
   isAlreadyFriend: boolean;
+  loading = false;
 
   constructor(public userSvc: UserService, private firebaseSvc: FirebaseService, private toastr: ToastrService) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));

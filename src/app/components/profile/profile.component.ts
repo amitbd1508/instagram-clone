@@ -7,6 +7,7 @@ import { Post } from '../../shared/post';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
+import { faLinkedin, faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  faLinkedin = faLinkedin;
+  faFacebook = faFacebook;
+  faTwitter = faTwitter;
+  faInstagram = faInstagram;
 
   currentUser: User;
   selectedFile: File = null;

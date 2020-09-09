@@ -44,6 +44,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LanguageChangeComponent } from './components/language-change/language-change.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from './components/settings/settings.component';
+import { PostComponent } from './components/post/post.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -74,7 +75,8 @@ const firebaseConfig = {
     FriendListComponent,
     ChatComponent,
     LanguageChangeComponent,
-    SettingsComponent
+    SettingsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

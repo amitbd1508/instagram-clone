@@ -17,8 +17,7 @@ export const ROUTES: Routes = [
   {path: 'register-user', component: SignUpComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'verify-email-address', component: VerifyEmailComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {path: 'setting', component: SettingsComponent, canActivate: [AuthGuard]},
 ];

@@ -7,46 +7,11 @@
 
   <div fxFlex="50">
       <mat-card *ngIf="randomUser">
-          <mat-card-header style="justify-content: center;">
-              <mat-card style="width: 100%">
-                  <mat-card-header (click)="auth.goToUserProfile(randomUser)">
-                      <img mat-card-avatar class="example-header-image" src="{{randomUser.photoURL}}" alt="Image">
-                      <mat-card-title>{{randomUser.displayName? randomUser.displayName : randomUser.uid}}</mat-card-title>
-                      <mat-card-subtitle>{{randomUser.email}}</mat-card-subtitle>
-                  </mat-card-header>
-                  <img mat-card-image src="{{randomUser.photoURL}}" alt="Photo">
-                  <mat-card-actions style="justify-content: left">
-                      <button mat-icon-button>
-                          <fa-icon [icon]="faHeart"></fa-icon>
-                      </button>
-                      <button mat-icon-button >
-                          <fa-icon [icon]="faPaperPlane"></fa-icon>
-                      </button>
-                      <button mat-button>
-                          <fa-icon [icon]="faComment"></fa-icon>
-                      </button>
-                  </mat-card-actions>
-                  <mat-card-content *ngFor="let comment of randomUser.comments">
-                      <mat-card-subtitle>
-                          {{comment.postedBy.displayName}}: {{comment.message}}
-                      </mat-card-subtitle>
-                  </mat-card-content>
-                  <app-comment [uid] = "randomUser.uid"></app-comment>
-              </mat-card>
-          </mat-card-header>
-
+          <app-profile></app-profile>
+          <app-post [user]="randomUser"></app-post>
       </mat-card>
   </div>
   <div fxFlex="25" fxFlex.xs="25">
-      <br>
-      <mat-card>
-          <mat-card-header (click)="gotToChat()">Go to Chat</mat-card-header>
-      </mat-card>
-      <mat-card>
-          <mat-card-header (click)="changeLanguage()">Change Language</mat-card-header>
-      </mat-card>
-      <br>
-      <br>
       <button mat-button>
           <mat-card (click)="nextUser()" style="background: #F7F8F8;">
               <mat-card-subtitle [translate]="'home.switch_to_another_profile_text'">

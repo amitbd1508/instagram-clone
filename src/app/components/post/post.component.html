@@ -1,0 +1,30 @@
+<mat-card-header style="justify-content: center;">
+    <mat-card style="width: 100%">
+        <img mat-card-image src="{{user.photoURL}}" alt="Photo">
+        <div>
+            <div fxFlex="30">
+                <img mat-card-image src="{{user.photoURL}}" alt="Photo">
+            </div>
+            <div fxFlex="10"></div>
+            <div fxFlex="60">
+                <mat-card-actions style="justify-content: left">
+                    <button mat-icon-button>
+                        <fa-icon [icon]="faHeart"></fa-icon>
+                    </button>
+                    <button mat-icon-button >
+                        <fa-icon [icon]="faPaperPlane"></fa-icon>
+                    </button>
+                    <button mat-button>
+                        <fa-icon [icon]="faComment"></fa-icon>
+                    </button>
+                </mat-card-actions>
+                <mat-card-content *ngFor="let comment of user.comments">
+                    <mat-card-subtitle>
+                        {{comment.postedBy.displayName}}: {{comment.message}}
+                    </mat-card-subtitle>
+                </mat-card-content>
+                <app-comment [uid] = "user.uid"></app-comment>
+            </div>
+        </div>
+    </mat-card>
+</mat-card-header>

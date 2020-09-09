@@ -1,32 +1,14 @@
-<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
+<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px" style="background: #ECF7FB">
 
-    <div fxFlex="10" fxFlex.xs="10">
-
-    </div>
-
-    <div fxFlex="80" fxLayoutAlign="center">
-        <mat-card style="justify-content: center">
-            <div>
-                <img [src]="userSvc.getUser().photoURL" height="200">
-            </div>
-            <br>
-            <mat-card-content>
-                <p>
-                    <b>Name: </b>{{userSvc.getUser().displayName}}
-                </p>
-                <p>
-                    <b>Email: </b>{{userSvc.getUser().email}}
-                </p>
-            </mat-card-content>
-            <button mat-button style="justify-content: center" (click)="addFriend()" *ngIf="!disable && !isAlreadyFriend">
-                Add As Friend
-            </button>
-            <mat-card-title *ngIf="!disable && isAlreadyFriend">Already Added</mat-card-title>
-        </mat-card>
+    <div fxFlex="20" fxFlex.xs="20">
 
     </div>
-    <div fxFlex="10" fxFlex.xs="10">
+
+    <div fxFlex="60" >
+        <app-profile></app-profile>
     </div>
+    <div fxFlex="20" fxFlex.xs="20">
+    </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
 
 </div>
-
