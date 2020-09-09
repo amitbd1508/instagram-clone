@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/user';
-import { Observable } from 'rxjs';
+import { ImageType, User } from '../../shared/user';
 import { AuthService } from '../../shared/auth.service';
 import { FirebaseService } from '../../shared/firebase.service';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -15,11 +14,16 @@ import { finalize } from 'rxjs/operators';
 export class UserProfileEditComponent implements OnInit {
 
   currentUser: User;
-  selectedFile: File = null;
-  selectedFileUrl: any = null;
+  selectedFileProfile: File = null;
+  selectedFileUrlProfile: any = null;
+
+  selectedFilePrimary: File = null;
+  selectedFileUrlPrimary: any = null;
+
+  selectedFileSecondary: File = null;
+  selectedFileUrlSecondary: any = null;
 
   fb;
-  downloadURL: Observable<string>;
   loading = false;
 
   constructor(public authService: AuthService,
@@ -35,36 +39,29 @@ export class UserProfileEditComponent implements OnInit {
     });
   }
 
-  onFileSelected(event): void {
-    this.selectedFile = event.target.files[0];
-    const mimeType = this.selectedFile.type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.showMessage('Please select an image', true);
-      this.loading = false;
-      return;
-    }
-    const reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
-    reader.onload = () => {
-      this.selectedFileUrl = reader.result;
-    };
-  }
-
-  uploadFile(image): void {
+  uploadFile(image, imageType: ImageType): void {
     const n = Date.now();
     const file = image;
-    const filePath = `profile-images/${n}`;
+    const filePath = `${imageType.toString()}/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     task
         .snapshotChanges()
         .pipe(
             finalize(() => {
-              this.downloadURL = fileRef.getDownloadURL();
-              this.downloadURL.subscribe(url => {
+              const downloadURL = fileRef.getDownloadURL();
+              downloadURL.subscribe(url => {
+                console.log(url);
                 if (url) {
                   this.fb = url;
-                  this.currentUser.photoURL = url;
+                  if (imageType === ImageType.PROFILE) {
+                    this.currentUser.photoURL = url;
+                  } else if (imageType === ImageType.PRIMARY) {
+                    this.currentUser.primaryPhotoURL = url;
+                  } else if (imageType === ImageType.SECONDARY) {
+                    this.currentUser.secondaryPhotoURL = url;
+                  }
+
                   this.firebaseService.updateUser(this.currentUser)
                       .then(data => {
                         this.loading = false;
@@ -89,10 +86,10 @@ export class UserProfileEditComponent implements OnInit {
     }
   }
 
-  updateProfile() {
+  updateProfile(selectedFile, imageType: ImageType) {
     this.loading = true;
-    if (this.selectedFile) {
-      this.uploadFile(this.selectedFile);
+    if (selectedFile) {
+      this.uploadFile(selectedFile, imageType);
     } else if (this.currentUser.displayName.length > 3) {
       this.firebaseService.updateUser(this.currentUser)
           .then(data => {
@@ -104,4 +101,51 @@ export class UserProfileEditComponent implements OnInit {
     }
   }
 
+  onFileSelectedProfile(event) {
+    this.selectedFileProfile = event.target.files[0];
+    const mimeType = this.selectedFileProfile.type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.showMessage('Please select an image', true);
+      this.loading = false;
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFileProfile);
+    reader.onload = () => {
+      this.selectedFileUrlProfile = reader.result;
+      this.updateProfile(this.selectedFilePrimary, ImageType.PRIMARY);
+    };
+  }
+
+  onFileSelectedPrimary(event) {
+    this.selectedFilePrimary = event.target.files[0];
+    const mimeType = this.selectedFilePrimary.type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.showMessage('Please select an image', true);
+      this.loading = false;
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFilePrimary);
+    reader.onload = () => {
+      this.selectedFileUrlPrimary = reader.result;
+      this.updateProfile(this.selectedFilePrimary, ImageType.PRIMARY);
+    };
+  }
+
+  onFileSelectedSecondary(event) {
+    this.selectedFileSecondary = event.target.files[0];
+    const mimeType = this.selectedFileSecondary.type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.showMessage('Please select an image', true);
+      this.loading = false;
+      return;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFileSecondary);
+    reader.onload = () => {
+      this.selectedFileUrlSecondary = reader.result;
+      this.updateProfile(this.selectedFileSecondary, ImageType.SECONDARY);
+    };
+  }
 }

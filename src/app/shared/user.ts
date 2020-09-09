@@ -6,9 +6,17 @@ export interface User {
   email: string;
   displayName: string;
   photoURL: string;
+  primaryPhotoURL: string;
+  secondaryPhotoURL: string;
   emailVerified: boolean;
   friends: Friend[];
   comments: Comment[];
   language: string;
   createdAt: number;
+}
+
+export enum ImageType {
+  PROFILE = 'profile-photo',
+  PRIMARY = 'primary-photo',
+  SECONDARY = 'secondary-photo'
 }

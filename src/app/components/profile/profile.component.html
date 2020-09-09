@@ -49,38 +49,10 @@
                     </button>
                     <button mat-button class="profile-button-subscribe">
                         <mat-card-title *ngIf="!isOwnerProfile">Subscribe</mat-card-title>
-                        <mat-card-title *ngIf="isOwnerProfile">Edit profile</mat-card-title>
+                        <mat-card-title *ngIf="isOwnerProfile" (click)="navigation.goToEditProfile()">Edit profile</mat-card-title>
                     </button>
                 </div>
             </div>
-            <!--<div>
-                <img [src]="selectedFileUrl? selectedFileUrl : currentUser.photoURL" height="100px">
-            </div>
-            <div>
-                <input type="file"
-                       id="file"
-                       #userPhoto
-                       accept="image/*"
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"/>
-            </div>
-            <br>
-            <mat-card-content>
-                <p>
-                    <label>Name</label>
-                    <input type="text" name="name" [(ngModel)]="currentUser.displayName" >
-                </p>
-                <p>
-                    <label>Email: </label>
-                    <label>{{currentUser.email}}</label>
-                </p>
-            </mat-card-content>
-            <mat-card-header style="justify-content: center">
-                <button mat-button (click)="updateProfile()">
-                    <b>Update</b>
-                </button>
-            </mat-card-header>-->
         </mat-card>
 
     </div>

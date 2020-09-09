@@ -73,7 +73,9 @@ export class FirebaseService {
   updateUser(currentUser: User) {
     const update = {
       displayName: currentUser.displayName,
-      photoURL: currentUser.photoURL
+      photoURL: currentUser.photoURL,
+      primaryPhotoURL: currentUser.primaryPhotoURL,
+      secondaryPhotoURL: currentUser.secondaryPhotoURL
     };
     return this.firestore.collection('users').doc(currentUser.uid).update(update);
   }

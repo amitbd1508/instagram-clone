@@ -1,75 +1,128 @@
+<div>
+    <div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
 
-<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
-
-    <div fxFlex="25" fxFlex.xs="25" fxLayoutAlign="center">
-        <mat-card-title style="margin-top: 10%"> User Profile Edit</mat-card-title>
-    </div>
-
-    <div fxFlex="50">
-        <div style="margin-top: 20%">
-
+        <div fxFlex="25" fxFlex.xs="25" fxLayoutAlign="center">
+            <mat-card-title style="margin-top: 10%"> User Profile Edit</mat-card-title>
         </div>
-        <mat-card-title class="title">Edit Your Profile</mat-card-title>
-        <br>
-        <br>
-        <mat-card-title class="title">Primary Photo</mat-card-title>
-        <div class="underline"></div>
-        <div class="title">
+
+        <div fxFlex="50">
+            <div style="margin-top: 20%">
+            </div>
+            <mat-card-title class="title">Edit Your Profile</mat-card-title>
+            <br>
+            <br>
+
+            <div class="title">
+                <div fxFlex="70">
+                    <mat-card-title>Name</mat-card-title>
+                    <br>
+                    <br>
+                    <textarea [(ngModel)]="currentUser.displayName" matInput placeholder="Ex. Jhon"></textarea>
+                    <div class="underline"></div>
+                </div>
+                <div fxFlex="30" fxLayoutAlign="end">
+                    <div style="margin-top: 30%">
+                        <button type="button" class="btn btn-outline-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">
+                <div fxFlex="70">
+                    <mat-card-title>Designation</mat-card-title>
+                    <br>
+                    <br>
+                    <textarea matInput placeholder="Ex. Software Engineer"></textarea>
+                    <div class="underline"></div>
+                </div>
+                <div fxFlex="30" fxLayoutAlign="end">
+                    <div style="margin-top: 30%">
+                        <button type="button" class="btn btn-outline-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">
+                <div fxFlex="70">
+                    <mat-card-title>Your Bio</mat-card-title>
+                    <br>
+                    <br>
+                    <textarea matInput placeholder="Ex. I am a researcher"></textarea>
+                    <div class="underline"></div>
+                </div>
+                <div fxFlex="30" fxLayoutAlign="end">
+                    <div style="margin-top: 30%">
+                        <button type="button" class="btn btn-outline-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <mat-card-title class="title">Profile Photo</mat-card-title>
+            <div class="underline"></div>
+            <div class="title">
+                <div class="title">
+                    <div fxFlex="70">
+                        <div>
+                            <img [src]="selectedFileUrlProfile? selectedFileUrlProfile : currentUser.photoURL" width="200px">
+                        </div>
+                    </div>
+                    <div fxFlex="30" fxLayoutAlign="end">
+                        <div>
+                            <input #profileInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelectedProfile($event)" accept="image/*"/>
+                            <button class="btn btn-outline-primary" (click)="profileInput.click()">Upload A Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <mat-card-title class="title">Primary Photo</mat-card-title>
+            <div class="underline"></div>
+            <div class="title">
+                <div class="title">
+                    <div fxFlex="70">
+                        <div>
+                            <img [src]="selectedFileUrlPrimary? selectedFileUrlPrimary : currentUser.primaryPhotoURL" width="200px">
+                        </div>
+                    </div>
+                    <div fxFlex="30" fxLayoutAlign="end">
+                        <div>
+                            <input #primaryInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelectedPrimary($event)" accept="image/*"/>
+                            <button class="btn btn-outline-primary" (click)="primaryInput.click()">Upload A Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <mat-card-title class="title">Secondary Photo</mat-card-title>
+            <div class="underline"></div>
             <div class="title">
                 <div fxFlex="70">
                     <div>
-                        <img [src]="selectedFileUrl? selectedFileUrl : currentUser.photoURL">
+                        <img [src]="selectedFileUrlSecondary? selectedFileUrlSecondary : currentUser.secondaryPhotoURL" width="200px">
                     </div>
                 </div>
                 <div fxFlex="30" fxLayoutAlign="end">
                     <div>
-                        <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)" accept="image/*"/>
-                        <button class="btn btn-outline-primary" (click)="csvInput.click()">Upload A Image</button>
+                        <input #secondaryInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelectedSecondary($event)" accept="image/*"/>
+                        <button class="btn btn-outline-primary" (click)="secondaryInput.click()">Upload A Image</button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <br>
-        <br>
-        <br>
-        <mat-card-title class="title">Secondary Photo</mat-card-title>
-        <div class="underline"></div>
-        <div class="title">
-            <div fxFlex="70">
-                <div>
-                    <img [src]="selectedFileUrl? selectedFileUrl : currentUser.photoURL">
-                </div>
-            </div>
-            <div fxFlex="30" fxLayoutAlign="end">
-                <div>
-                    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)" accept="image/*"/>
-                    <button class="btn btn-outline-primary" (click)="csvInput.click()">Upload A Image</button>
-                </div>
-            </div>
+            <br>
+            <br>
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
         </div>
+        <div fxFlex="25" fxFlex.xs="25">
 
-        <br>
-        <br>
-        <div class="title">
-            <div fxFlex="70">
-                <mat-card-title>Your Bio</mat-card-title>
-                <br>
-                <br>
-                <textarea matInput placeholder="Ex. I am a researcher"></textarea>
-                <div class="underline"></div>
-            </div>
-            <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary">Update</button>
-            </div>
         </div>
-        <br>
-        <br>
-    </div>
-    <div fxFlex="25" fxFlex.xs="25">
-
     </div>
 </div>
-<div fxLayout="row">
 
-</div>

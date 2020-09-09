@@ -5,7 +5,8 @@
     </div>
 
     <div fxFlex="60" >
-        <app-profile></app-profile>
+        <app-profile [currentUser]="currentUser" [isOwnerProfile]="true"></app-profile>
+        <app-post [user]="currentUser"></app-post>
     </div>
     <div fxFlex="20" fxFlex.xs="20">
     </div>
