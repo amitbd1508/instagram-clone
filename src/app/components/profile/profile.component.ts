@@ -20,7 +20,9 @@ export class ProfileComponent implements OnInit {
   faTwitter = faTwitter;
   faInstagram = faInstagram;
 
-  currentUser: User;
+  @Input() currentUser: User;
+  @Input() isOwnerProfile: boolean;
+
   selectedFile: File = null;
   selectedFileUrl: any = null;
   description = '';
@@ -33,11 +35,12 @@ export class ProfileComponent implements OnInit {
               private storage: AngularFireStorage,
               private toastr: ToastrService
   ) {
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    if (!this.currentUser) {
+      this.currentUser = JSON.parse(localStorage.getItem('user'));
+    }
   }
 
   ngOnInit(): void {
-    console.log('++++', this.currentUser.uid);
     this.firebaseService.getUserById(this.currentUser.uid).subscribe(user => {
       this.currentUser = user;
       console.log(user);
