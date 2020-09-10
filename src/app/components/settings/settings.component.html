@@ -32,7 +32,7 @@
                 <mat-card-subtitle>It's good idea use a strong password that you're not using elsewhere</mat-card-subtitle>
             </div>
             <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary">Changes</button>
+                <button type="button" class="btn btn-outline-primary">Change</button>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
                 <mat-card-subtitle>Change to your preferred language</mat-card-subtitle>
             </div>
             <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary">Changes</button>
+                <button type="button" class="btn btn-outline-primary" (click)="onClickChangeLanguage()">Change</button>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
                 <div fxFlex="70">
                 </div>
                 <div fxFlex="30" fxLayoutAlign="end">
-                    <button mat-button>
+                    <button mat-button (click)="onClickDeleteAccount()">
                         <img style="max-width: 30px; margin-right: 10px" src="/assets/icons/DeleteAccount.svg">
                         <mat-card-subtitle class="text-danger">Delete Account</mat-card-subtitle>
                     </button>

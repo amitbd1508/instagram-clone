@@ -80,6 +80,17 @@ export class FirebaseService {
     return this.firestore.collection('users').doc(currentUser.uid).update(update);
   }
 
+  updateUserName(uid, name) {
+    const update = {
+      displayName: name,
+    };
+    return this.firestore.collection('users').doc(uid).update(update);
+  }
+
+  deleteAccount(uid) {
+    return this.firestore.collection('users').doc(uid).delete();
+  }
+
   addFriend(userId, user: User): Promise<any> {
     let currentUser: User;
     const friend: Friend = {

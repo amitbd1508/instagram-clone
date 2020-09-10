@@ -46,6 +46,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PostComponent } from './components/post/post.component';
 import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -78,7 +80,8 @@ const firebaseConfig = {
     LanguageChangeComponent,
     SettingsComponent,
     PostComponent,
-    UserProfileEditComponent
+    UserProfileEditComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +115,8 @@ const firebaseConfig = {
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatSidenavModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
