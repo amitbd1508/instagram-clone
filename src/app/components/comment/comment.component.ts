@@ -29,6 +29,9 @@ export class CommentComponent implements OnInit {
     } else {
       this.disable = false;
     }
+
+    this.firebase.getUserById(this.currentUser.uid)
+        .subscribe(user => this.currentUser = user);
   }
 
   showMessage(message: string, error: boolean = false): void {

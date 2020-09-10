@@ -71,7 +71,6 @@ export class HomeComponent implements OnInit {
 
   changeLanguage() {
     const modalRef = this.modalService.open(LanguageChangeComponent);
-    modalRef.componentInstance.language = 'fr';
     modalRef.result.then((data) => {
     });
   }

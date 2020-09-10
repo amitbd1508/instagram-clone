@@ -80,11 +80,25 @@ export class FirebaseService {
     return this.firestore.collection('users').doc(currentUser.uid).update(update);
   }
 
-  updateUserName(uid, name) {
+  updateUserBio(currentUser: User) {
     const update = {
-      displayName: name,
+      bio: currentUser.bio,
     };
-    return this.firestore.collection('users').doc(uid).update(update);
+    return this.firestore.collection('users').doc(currentUser.uid).update(update);
+  }
+
+  updateUserName(currentUser: User) {
+    const update = {
+      displayName: currentUser.displayName,
+    };
+    return this.firestore.collection('users').doc(currentUser.uid).update(update);
+  }
+
+  updateUserDesignation(currentUser: User) {
+    const update = {
+      designation: currentUser.designation,
+    };
+    return this.firestore.collection('users').doc(currentUser.uid).update(update);
   }
 
   deleteAccount(uid) {

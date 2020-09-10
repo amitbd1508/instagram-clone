@@ -1,7 +1,7 @@
 
-<div class="content" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxFlexFill fxLayoutGap="10px">
+<div class="content" fxLayout="row">
 
-    <div fxFlex="25" fxFlex.xs="25" fxLayoutAlign="center">
+    <div fxFlex="25" fxLayoutAlign="center">
         <mat-card-title style="margin-top: 10%"> User Settings</mat-card-title>
     </div>
 
@@ -14,41 +14,41 @@
         <br>
         <mat-card-subtitle class="title">Account Preference</mat-card-subtitle>
         <div class="underline"></div>
-        <div class="title">
+        <div>
             <div fxFlex="70">
-                <mat-card-header>Email</mat-card-header>
+                <mat-card-content>Email</mat-card-content>
                 <br>
                 <mat-card-subtitle>amitbd1508@gmail.com</mat-card-subtitle>
             </div>
             <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary">Changes</button>
+                <button disabled type="button" class="btn btn-outline-primary" style="height: 40px; padding-top: 10px">Cannot Change</button>
             </div>
         </div>
 
         <div class="title">
             <div fxFlex="70">
-                <mat-card-header>Change Password</mat-card-header>
+                <mat-card-content>Change Password</mat-card-content>
                 <br>
                 <mat-card-subtitle>It's good idea use a strong password that you're not using elsewhere</mat-card-subtitle>
             </div>
             <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary">Change</button>
+                <button type="button" class="btn btn-outline-primary" style="height: 40px">Change</button>
             </div>
         </div>
 
         <div class="title">
             <div fxFlex="70">
-                <mat-card-header>Change Language</mat-card-header>
+                <mat-card-content>Change Language</mat-card-content>
                 <br>
                 <mat-card-subtitle>Change to your preferred language</mat-card-subtitle>
             </div>
             <div fxFlex="30" fxLayoutAlign="end">
-                <button type="button" class="btn btn-outline-primary" (click)="onClickChangeLanguage()">Change</button>
+                <button type="button" class="btn btn-outline-primary" (click)="onClickChangeLanguage()" style="height: 40px">Change</button>
             </div>
         </div>
 
         <div class="title">
-            <mat-card-header>Deactivate Account</mat-card-header>
+            <mat-card-content>Deactivate Account</mat-card-content>
             <div class="underline"></div>
             <br>
             <div>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="title">
-            <mat-card-header>Delete Account</mat-card-header>
+            <mat-card-content>Delete Account</mat-card-content>
             <div class="underline"></div>
             <br>
             <div>

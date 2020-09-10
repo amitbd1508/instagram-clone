@@ -22,7 +22,7 @@
                 </div>
                 <div fxFlex="30" fxLayoutAlign="end">
                     <div style="margin-top: 30%">
-                        <button type="button" class="btn btn-outline-primary">Update</button>
+                        <button type="button" class="btn btn-outline-primary" (click)="updateName()">Update</button>
                     </div>
                 </div>
             </div>
@@ -32,12 +32,12 @@
                     <mat-card-title>Designation</mat-card-title>
                     <br>
                     <br>
-                    <textarea matInput placeholder="Ex. Software Engineer"></textarea>
+                    <textarea matInput placeholder="Ex. Software Engineer" [(ngModel)]="currentUser.designation"></textarea>
                     <div class="underline"></div>
                 </div>
                 <div fxFlex="30" fxLayoutAlign="end">
                     <div style="margin-top: 30%">
-                        <button type="button" class="btn btn-outline-primary">Update</button>
+                        <button type="button" class="btn btn-outline-primary" (click)="updateDesignation()">Update</button>
                     </div>
                 </div>
             </div>
@@ -47,12 +47,12 @@
                     <mat-card-title>Your Bio</mat-card-title>
                     <br>
                     <br>
-                    <textarea matInput placeholder="Ex. I am a researcher"></textarea>
+                    <textarea matInput placeholder="Ex. I am a researcher" [(ngModel)]="currentUser.bio"></textarea>
                     <div class="underline"></div>
                 </div>
                 <div fxFlex="30" fxLayoutAlign="end">
                     <div style="margin-top: 30%">
-                        <button type="button" class="btn btn-outline-primary">Update</button>
+                        <button type="button" class="btn btn-outline-primary" (click)="updateBio()">Update</button>
                     </div>
                 </div>
             </div>
@@ -118,11 +118,13 @@
 
             <br>
             <br>
-            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
         </div>
         <div fxFlex="25" fxFlex.xs="25">
 
         </div>
     </div>
 </div>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+
 

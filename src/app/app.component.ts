@@ -11,6 +11,7 @@ export class AppComponent {
 
   constructor(public authService: AuthService, private translate: TranslateService) {
     translate.setDefaultLang('en');
+    localStorage.setItem('language', 'en');
   }
 
   title = 'OP SCIENCES PVT';

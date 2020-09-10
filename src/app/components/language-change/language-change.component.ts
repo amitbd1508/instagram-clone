@@ -9,15 +9,22 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LanguageChangeComponent implements OnInit {
 
-  @Input() language: string;
+  language: string;
   constructor(private translation: TranslateService, public activeModal: NgbActiveModal) {
+    this.language = localStorage.getItem('language');
   }
 
   ngOnInit(): void {
+    this.language = localStorage.getItem('language');
+    console.log(this.language);
+    if (!this.language) {
+      this.language = 'fr';
+    }
   }
 
   changeLanguage(lng: string) {
     this.language = lng;
     this.translation.setDefaultLang(lng);
+    localStorage.setItem('language', lng);
   }
 }

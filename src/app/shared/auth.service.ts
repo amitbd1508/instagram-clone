@@ -115,6 +115,8 @@ export class AuthService {
       secondaryPhotoURL: 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png',
       friends: [],
       language: 'en',
+      designation: '',
+      bio: '',
       emailVerified: true,
       createdAt: Date.now(),
     };

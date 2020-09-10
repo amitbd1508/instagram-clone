@@ -36,6 +36,7 @@ export class UserProfileEditComponent implements OnInit {
   ngOnInit(): void {
     this.firebaseService.getUserById(this.currentUser.uid).subscribe(user => {
       this.currentUser = user;
+      localStorage.setItem('user', JSON.stringify(this.currentUser));
     });
   }
 
@@ -113,7 +114,7 @@ export class UserProfileEditComponent implements OnInit {
     reader.readAsDataURL(this.selectedFileProfile);
     reader.onload = () => {
       this.selectedFileUrlProfile = reader.result;
-      this.updateProfile(this.selectedFilePrimary, ImageType.PRIMARY);
+      this.updateProfile(this.selectedFileProfile, ImageType.PROFILE);
     };
   }
 
@@ -147,5 +148,23 @@ export class UserProfileEditComponent implements OnInit {
       this.selectedFileUrlSecondary = reader.result;
       this.updateProfile(this.selectedFileSecondary, ImageType.SECONDARY);
     };
+  }
+
+  updateBio() {
+    this.loading = true;
+    this.firebaseService.updateUserBio(this.currentUser)
+        .then(data => this.loading = false);
+  }
+
+  updateDesignation() {
+    this.loading = true;
+    this.firebaseService.updateUserDesignation(this.currentUser)
+        .then(data => this.loading = false);
+  }
+
+  updateName() {
+    this.loading = true;
+    this.firebaseService.updateUserName(this.currentUser)
+        .then(data => this.loading = false);
   }
 }

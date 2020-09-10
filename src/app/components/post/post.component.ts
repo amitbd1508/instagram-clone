@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../shared/user';
 import { AuthService } from '../../shared/auth.service';
 import { faHeart, faComment, faPaperPlane, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
+import { FirebaseService } from '../../shared/firebase.service';
 
 @Component({
   selector: 'app-post',
@@ -16,7 +17,7 @@ export class PostComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private firebase: FirebaseService) {
     this.faHeart = faHeart;
     this.faComment = faComment;
     this.faPaperPlane = faPaperPlane;
@@ -24,6 +25,8 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.firebase.getUserById(this.user.uid)
+        .subscribe(user => this.user = user);
   }
 
 }

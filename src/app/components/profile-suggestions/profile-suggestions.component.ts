@@ -37,9 +37,8 @@ export class ProfileSuggestionsComponent implements OnInit {
   }
 
   goToUserProfile(rUser: User) {
-    console.log(rUser);
     this.userService.setUser(rUser);
-    this.router.navigate(['user-profile']);
+    this.router.navigate(['profile']);
   }
 
   private removeCurrentUser() {

@@ -20,7 +20,6 @@ export class SettingsComponent implements OnInit {
 
   onClickChangeLanguage() {
     const modalRef = this.modalService.open(LanguageChangeComponent);
-    modalRef.componentInstance.language = 'fr';
     modalRef.result.then((data) => {
     });
   }

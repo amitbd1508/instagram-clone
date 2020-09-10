@@ -4,24 +4,29 @@
         <mat-card-subtitle>Update Your Language</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <button mat-button>
-            <mat-card-header (click)="changeLanguage('en')">
-                <p>
-                    <span>English</span>
-                    <mat-icon *ngIf="language == 'en'">check_circle</mat-icon>
-                    <mat-icon *ngIf="language !== 'en'">check_circle_outline</mat-icon>
-                </p>
-            </mat-card-header>
+        <button mat-button (click)="changeLanguage('en')">
+            <p >
+                <span>English</span>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <mat-icon *ngIf="language == 'en'">check_circle</mat-icon>
+                <mat-icon *ngIf="language !== 'en'">check_circle_outline</mat-icon>
+            </p>
         </button>
         <br>
-        <button mat-button>
-            <mat-card-header (click)="changeLanguage('fr')">
-                <p>
-                    <span>French</span>
-                    <mat-icon *ngIf="language === 'fr'">check_circle</mat-icon>
-                    <mat-icon *ngIf="language !== 'fr'">check_circle_outline</mat-icon>
-                </p>
-            </mat-card-header>
+        <br>
+        <br>
+        <button mat-button (click)="changeLanguage('fr')">
+            <p>
+                <span>French</span>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <mat-icon *ngIf="language === 'fr'">check_circle</mat-icon>
+
+                <mat-icon *ngIf="language !== 'fr'">check_circle_outline</mat-icon>
+            </p>
         </button>
 
     </mat-card-content>

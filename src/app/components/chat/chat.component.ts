@@ -9,6 +9,7 @@ import { UserService } from '../../shared/user.service';
 import { user } from 'firebase-functions/lib/providers/auth';
 import * as moment from 'moment';
 import { ChatService } from '../../shared/chat.service';
+import { NavigationService } from '../../shared/navigation.service';
 
 @Component({
   selector: 'app-chat',
@@ -31,7 +32,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   divClass: string;
 
 
-  constructor(private chatService: ChatService, private router: Router, private userSvc: UserService) {
+  constructor(private chatService: ChatService, private router: Router, private userSvc: UserService, private navigation: NavigationService) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.selectedFriend = this.userSvc.getChatFriend();
   }
@@ -97,7 +98,7 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   }
 
   goToHome() {
-    this.router.navigate(['home']);
+    this.navigation.goToHome();
   }
 
   scrollToBottom = () => {

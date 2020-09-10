@@ -12,6 +12,8 @@ export interface User {
   friends: Friend[];
   comments: Comment[];
   language: string;
+  designation: string;
+  bio: string;
   createdAt: number;
 }
 

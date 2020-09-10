@@ -4,6 +4,7 @@ import { FirebaseService } from '../../shared/firebase.service';
 import { Friend } from '../../shared/friend';
 import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
+import { NavigationService } from '../../shared/navigation.service';
 
 @Component({
   selector: 'app-friend-list',
@@ -15,7 +16,10 @@ export class FriendListComponent implements OnInit {
   disable: boolean;
   friends: Friend[];
 
-  constructor(private firebase: FirebaseService, private userSvc: UserService, private router: Router) {
+  constructor(private firebase: FirebaseService,
+              private userSvc: UserService,
+              private navigation: NavigationService,
+              private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
 
@@ -33,13 +37,12 @@ export class FriendListComponent implements OnInit {
     });
   }
 
+  gotToMessage(friend: Friend) {
+    this.navigation.goToChat(friend);
+  }
+
   private getAllFriends() {
     this.firebase.getUserById(this.currentUser.uid)
         .subscribe(user => this.friends = user.friends);
-  }
-
-  gotToMessage(friend: Friend) {
-    this.userSvc.setChatFriend(friend);
-    this.router.navigate(['chat']);
   }
 }

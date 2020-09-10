@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { FirebaseService } from '../../shared/firebase.service';
 import { User } from '../../shared/user';
@@ -15,30 +15,79 @@ import { NavigationService } from '../../shared/navigation.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnChanges {
   faLinkedin = faLinkedin;
   faFacebook = faFacebook;
   faTwitter = faTwitter;
   faInstagram = faInstagram;
 
-  @Input() currentUser: User;
+  currentUser: User;
+
+  @Input() showingUser: User;
   @Input() isOwnerProfile: boolean;
 
   loading = false;
+
+  isFriend = false;
+  numberOfFriends = 0;
 
   constructor(public authService: AuthService,
               private firebaseService: FirebaseService,
               private storage: AngularFireStorage,
               public navigation: NavigationService
   ) {
-    if (!this.currentUser) {
-      this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+
+    if (!this.showingUser) {
+      this.showingUser = this.currentUser;
     }
+
+    this.firebaseService.getUserById(this.currentUser.uid)
+        .subscribe(user => {
+          this.currentUser = user;
+        });
+
+    this.getFriend();
+  }
+
+  getFriend() {
+    if (this.currentUser.uid !== this.showingUser.uid) {
+      for (const u of this.currentUser.friends) {
+        if (u.uid === this.showingUser.uid) {
+          this.isFriend = true;
+          break;
+        }
+      }
+    }
+  }
+
+  getFriendsCount() {
+    this.firebaseService.getUserById(this.showingUser.uid)
+        .subscribe(user => {
+          this.numberOfFriends = user.friends.length;
+        });
   }
 
   ngOnInit(): void {
     this.firebaseService.getUserById(this.currentUser.uid).subscribe(user => {
       this.currentUser = user;
+      this.getFriend();
     });
+  }
+
+  onClickSubscribe() {
+    this.firebaseService.addFriend(this.currentUser.uid, this.showingUser)
+        .then(data => {
+          this.getFriend();
+        });
+  }
+
+  ngOnChanges(changes): void {
+    this.getFriend();
+    this.getFriendsCount();
+  }
+
+  onClickChat(user: User) {
+    this.navigation.goToChat(user);
   }
 }

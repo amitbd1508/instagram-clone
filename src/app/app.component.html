@@ -23,7 +23,7 @@
   </button>
 
   <button mat-icon-button *ngIf="authService.isLoggedIn" (click)="authService.goToProfile()">
-    <img (src)="authService.userData.photoUrl ? authService.userData.photoUrl : 'https://f0.pngfuel.com/png/340/956/profile-user-icon-png-clip-art-thumbnail.png'">
+    <mat-icon>account_box</mat-icon>
   </button>
   <button mat-icon-button *ngIf="authService.isLoggedIn">
     <mat-icon (click)="authService.SignOut()">logout</mat-icon>

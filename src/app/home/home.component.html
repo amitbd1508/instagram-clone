@@ -7,8 +7,7 @@
 
   <div fxFlex="50">
       <mat-card *ngIf="randomUser">
-          <app-profile [currentUser]="randomUser" [isOwnerProfile]="false"></app-profile>
-          <app-post [user]="randomUser"></app-post>
+          <app-profile [showingUser]="randomUser" [isOwnerProfile]="false"></app-profile>
       </mat-card>
   </div>
   <div fxFlex="25" fxFlex.xs="25">

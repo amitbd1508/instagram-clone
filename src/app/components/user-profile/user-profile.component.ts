@@ -25,11 +25,11 @@ export class UserProfileComponent implements OnInit {
       this.showMessage('Please login for add friend', true);
       this.disable = true;
     } else {
-      this.chalkIsAlreadyAdded();
+      // this.chalkIsAlreadyAdded();
     }
   }
 
-  private chalkIsAlreadyAdded() {
+  /*private chalkIsAlreadyAdded() {
     try{
       this.disable = false;
       this.firebaseSvc.getUserById(this.currentUser.uid)
@@ -47,7 +47,7 @@ export class UserProfileComponent implements OnInit {
       console.log(e);
       this.disable = true;
     }
-  }
+  }*/
 
   showMessage(message: string, error: boolean = false): void {
     if (error) {
@@ -59,12 +59,5 @@ export class UserProfileComponent implements OnInit {
         timeOut: 2000,
       });
     }
-  }
-
-  addFriend() {
-    this.firebaseSvc.addFriend(this.currentUser.uid, this.userSvc.getUser())
-        .then(data => {
-          this.chalkIsAlreadyAdded();
-        });
   }
 }
