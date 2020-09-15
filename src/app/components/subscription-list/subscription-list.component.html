@@ -1,0 +1,30 @@
+<div fxLayout="column">
+    <br>
+    <br>
+    <mat-card-title [translate]="'friend-list.my-subscriptions'" style="background: #F7F8F8"> MY SUBSCRIPTIONS </mat-card-title>
+</div>
+<div>
+    <mat-grid-list cols="5">
+        <div *ngFor="let user of friends">
+            <mat-grid-tile (click)="goToUserProfile(user)">
+                <mat-card style="justify-content: center; background: #F7F8F8">
+                    <div id="over" >
+                        <img style="height: 100%; width: 80%; align-content: center"
+                             src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                             alt="{{user.displayName}}">
+
+                    </div>
+                    <mat-card-header style="justify-content: center">
+                        <mat-card-title>
+                            <strong>{{user.displayName}}</strong>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <strong>{{user.email}}</strong>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </mat-grid-tile>
+        </div>
+
+    </mat-grid-list>
+</div>
