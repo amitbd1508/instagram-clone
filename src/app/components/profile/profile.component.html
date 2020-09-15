@@ -2,22 +2,20 @@
     <div fxFlex="40" style="background: #ECF7FB">
         <mat-card style="justify-content: left;background: #ECF7FB">
             <mat-card-header style="background: #ECF7FB">
-                <div fxFlex="30">
+                <div fxFlex="25">
                     <img mat-card-avatar class="example-header-image" src="{{showingUser.photoURL}}" alt="Image">
                 </div>
-                <div fxFlex="50" style="margin-left: 5%">
+                <div fxFlex="55" style="margin-left: 5%">
                     <mat-card-title>{{showingUser.displayName? showingUser.displayName : showingUser.uid}}</mat-card-title>
                     <mat-card-subtitle>{{showingUser.email}}</mat-card-subtitle>
                     <mat-card-content>{{showingUser.designation}}</mat-card-content>
                     <mat-card-title>{{showingUser.bio}}</mat-card-title>
                 </div>
-                <div fxFlex="20">
+                <div fxFlex="30">
                     <fa-icon size="lg" style="margin-right: 5px;" [icon]="faFacebook"></fa-icon>
                     <fa-icon size="lg" style="margin-right: 5px;" [icon]="faInstagram"></fa-icon>
                     <fa-icon size="lg" style="margin-right: 5px;" [icon]="faLinkedin"></fa-icon>
                     <fa-icon size="lg" style="margin-right: 5px;" [icon]="faTwitter"></fa-icon>
-                    <br>
-                    <br>
                     <br>
                     <div>
                         <button type="button" class="btn btn-outline-secondary" (click)="onClickChat(showingUser)">
@@ -26,11 +24,6 @@
                         </button>
                     </div>
                     <br>
-                    <br>
-                    <br>
-                    <!--<div>
-                        <mat-icon>share</mat-icon>
-                    </div>-->
                 </div>
 
             </mat-card-header>
@@ -40,21 +33,21 @@
                 </div>
                 <div fxFlex="60" fxLayoutAlign="end">
                     <button mat-button class="profile-button">
-                        <mat-card-title>0</mat-card-title>
+                        0
                         <p>Likes</p>
                     </button>
                     <button mat-button class="profile-button">
-                        <mat-card-title>{{numberOfFriends}}</mat-card-title>
+                        {{numberOfFriends}}
                         <p>Subscribers</p>
                     </button>
                     <button mat-button class="profile-button-subscribe" *ngIf="isOwnerProfile" (click)="navigation.goToEditProfile()">
-                        <mat-card-title>Edit profile</mat-card-title>
+                        <mat-card-content>Edit profile</mat-card-content>
                     </button>
                     <button mat-button class="profile-button-subscribe" *ngIf="!isOwnerProfile && !isFriend" (click)="onClickSubscribe()">
-                        <mat-card-title >Subscribe</mat-card-title>
+                        <mat-card-content >Subscribe</mat-card-content>
                     </button>
                     <button mat-button class="profile-button-subscribed" *ngIf="!isOwnerProfile && isFriend">
-                        <mat-card-title >Subscribed</mat-card-title>
+                        <mat-card-content >Subscribed</mat-card-content>
                     </button>
                 </div>
             </div>

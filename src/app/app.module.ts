@@ -48,6 +48,7 @@ import { PostComponent } from './components/post/post.component';
 import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { SearchProfileComponent } from './components/search-profile/search-profile.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGcKlVLcqGbXs7HuscnYTycIVjkyr2xbg',
@@ -81,7 +82,8 @@ const firebaseConfig = {
     SettingsComponent,
     PostComponent,
     UserProfileEditComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    SearchProfileComponent
   ],
   imports: [
     BrowserModule,

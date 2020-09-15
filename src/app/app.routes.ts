@@ -10,6 +10,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { ChatComponent } from './components/chat/chat.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchProfileComponent } from './components/search-profile/search-profile.component';
 
 export const ROUTES: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -22,4 +24,5 @@ export const ROUTES: Routes = [
   {path: 'profile-edit', component: UserProfileEditComponent, canActivate: [AuthGuard]},
   {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {path: 'setting', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'search', component: SearchProfileComponent, canActivate: [AuthGuard]},
 ];

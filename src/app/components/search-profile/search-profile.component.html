@@ -1,0 +1,68 @@
+<div fxLayout="column">
+    <div fxFlex="20" fxLayoutAlign="center">
+        <div>
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input matInput
+                           [placeholder]="'search.quick-search' | translate"
+                           aria-label="User"
+                           [formControl]="stateCtrl">
+                </mat-form-field>
+            </form>
+        </div>
+
+    </div>
+
+    <div fxFlex="60">
+        <mat-grid-list cols="5">
+            <div *ngFor="let user of filteredStates | async">
+                <mat-grid-tile>
+                    <mat-card style="justify-content: center; background: #F7F8F8">
+                        <div id="over" (click)="goToUserProfile(user)" >
+                            <img style="height: 100%; width: 80%; align-content: center"
+                                 src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+                                 alt="{{user.displayName}}">
+
+                        </div>
+                        <mat-card-header style="justify-content: center">
+                            <mat-card-title>
+                                <strong>{{user.displayName}}</strong>
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                <strong>{{user.email}}</strong>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </mat-grid-tile>
+            </div>
+
+        </mat-grid-list>
+
+    </div>
+
+    <div fxFlex="20" fxLayout="center">
+        <mat-grid-list cols="5">
+            <div *ngFor="let friend of currentUser.friends">
+                <mat-grid-tile>
+                    <mat-card style="justify-content: center; background: #F7F8F8">
+                        <div id="ove2r" (click)="goToUserProfile(friend)" >
+                            <img style="height: 100%; width: 80%; align-content: center"
+                                 src="{{(friend.photoURL) ? friend.photoURL : '/assets/dummy-user.png'}}"
+                                 alt="{{friend.displayName}}">
+
+                        </div>
+                        <mat-card-header style="justify-content: center">
+                            <mat-card-title>
+                                <strong>{{friend.displayName}}</strong>
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                <strong>{{friend.email}}</strong>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                    </mat-card>
+                </mat-grid-tile>
+            </div>
+
+        </mat-grid-list>
+    </div>
+</div>

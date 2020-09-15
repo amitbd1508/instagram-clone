@@ -1,31 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { User } from '../../shared/user';
 import { FirebaseService } from '../../shared/firebase.service';
 import { UserService } from '../../shared/user.service';
-import { Router } from '@angular/router';
-
-export interface State {
-  flag: string;
-  name: string;
-  population: string;
-}
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { User } from '../../shared/user';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-search-profile',
+  templateUrl: './search-profile.component.html',
+  styleUrls: ['./search-profile.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchProfileComponent implements OnInit {
+
   stateCtrl = new FormControl();
   filteredStates: Observable<User[]>;
 
   users: User[] = [];
   currentUser: User;
 
-  constructor(private firebase: FirebaseService, private userSvc: UserService, private route: Router) {
+  constructor(private firebase: FirebaseService, private userSvc: UserService) {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+
     this.firebase.getUsers()
         .subscribe(data => {
           this.users = data;
@@ -36,14 +32,19 @@ export class SearchComponent implements OnInit {
             startWith(''),
             map(user => user ? this._filterStates(user) : this.users.slice())
         );
+
+    if (this.currentUser) {
+      this.firebase.getUserById(this.currentUser.uid)
+          .subscribe(user => this.currentUser = user);
+    }
+    console.log(this.currentUser.friends);
   }
 
   ngOnInit(): void {
   }
 
-  goToUserProfile(user: User) {
-    this.userSvc.setUser(user);
-    this.route.navigate(['user-profile']);
+  goToUserProfile(user) {
+
   }
 
   private _filterStates(value: string): User[] {

@@ -10,3 +10,11 @@
     background: #303030;
     color: #F7FAFC;
 }
+
+
+.profile-image {
+    background-size: cover;
+    height: 80%;
+    width: 80%;
+    margin: 3%;
+}
