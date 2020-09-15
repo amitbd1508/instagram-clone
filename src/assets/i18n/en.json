@@ -6,7 +6,8 @@
     "suggested-user": "Suggested User"
   },
   "friend-list": {
-    "my-subscriptions": "MY SUBSCRIPTIONS"
+    "my-subscriptions": "MY SUBSCRIPTIONS",
+    "see-more": "See More"
   },
   "comment": {
     "comment": "Comment",
@@ -18,5 +19,32 @@
   },
   "search": {
     "quick-search": "Quick Search"
+  },
+  "chat": {
+    "messages":"Messages",
+    "enter-your-message": "Enter your message",
+    "your-messages": "Your Messages",
+    "send-private-messages-to-a-friend": "Send private messages to a friend"
+  },
+  "profile": {
+    "send-message": "Send Message",
+    "likes": "Likes",
+    "subscribers": "Subscribers",
+    "edit-profile": "Edit profile",
+    "subscribe": "Subscribe",
+    "subscribed": "Subscribed",
+    "about-me": "About Me"
+  },
+  "edit-profile": {
+    "user-profile-edit": "User Profile Edit",
+    "edit-your-profile": "Edit Your Profile",
+    "name": "Name",
+    "update":"Update",
+    "designation": "Designation",
+    "your-bio": "Your Bio",
+    "profile-photo": "Profile Photo",
+    "upload-a-image": "Upload A Image",
+    "primary-photo": "Primary Photo",
+    "secondary-photo": "Secondary Photo"
   }
 }

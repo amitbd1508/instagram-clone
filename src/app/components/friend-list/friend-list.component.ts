@@ -18,8 +18,7 @@ export class FriendListComponent implements OnInit {
 
   constructor(private firebase: FirebaseService,
               private userSvc: UserService,
-              private navigation: NavigationService,
-              private router: Router) {
+              public navigation: NavigationService) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
 
@@ -43,6 +42,6 @@ export class FriendListComponent implements OnInit {
 
   private getAllFriends() {
     this.firebase.getUserById(this.currentUser.uid)
-        .subscribe(user => this.friends = user.friends);
+        .subscribe(user => this.friends = user.friends.slice(0, 5));
   }
 }

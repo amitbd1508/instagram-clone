@@ -30,24 +30,37 @@ export class ProfileComponent implements OnInit, OnChanges {
 
   isFriend = false;
   numberOfFriends = 0;
+  isReadOnly = false;
 
   constructor(public authService: AuthService,
               private firebaseService: FirebaseService,
-              private storage: AngularFireStorage,
               public navigation: NavigationService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
 
     if (!this.showingUser) {
-      this.showingUser = this.currentUser;
+      if (this.navigation.isShowProfile) {
+        this.isReadOnly = true;
+        this.firebaseService.getUserById(this.navigation.selectedUser.uid)
+            .subscribe(user => {
+              this.showingUser = user;
+              this.navigation.resetGotToUserProfile();
+              this.getFriend();
+            });
+        this.isOwnerProfile = false;
+      } else {
+        this.showingUser = this.currentUser;
+      }
+    }
+
+    if (!this.navigation.isShowProfile) {
+      this.getFriend();
     }
 
     this.firebaseService.getUserById(this.currentUser.uid)
         .subscribe(user => {
           this.currentUser = user;
         });
-
-    this.getFriend();
   }
 
   getFriend() {
@@ -83,6 +96,7 @@ export class ProfileComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes): void {
+    this.isFriend = false;
     this.getFriend();
     this.getFriendsCount();
   }

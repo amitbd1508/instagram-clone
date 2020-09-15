@@ -20,7 +20,7 @@
                     <div>
                         <button type="button" class="btn btn-outline-secondary" (click)="onClickChat(showingUser)">
                             <mat-icon>message</mat-icon>
-                            Send Message
+                            <p  [translate]="'profile.send-message' | translate">Send Message</p>
                         </button>
                     </div>
                     <br>
@@ -34,20 +34,21 @@
                 <div fxFlex="60" fxLayoutAlign="end">
                     <button mat-button class="profile-button">
                         0
-                        <p>Likes</p>
+                        <p [translate]="'profile.likes' | translate">Likes</p>
                     </button>
                     <button mat-button class="profile-button">
                         {{numberOfFriends}}
-                        <p>Subscribers</p>
+                        <p [translate]="'profile.subscribers' | translate">Subscribers</p>
                     </button>
-                    <button mat-button class="profile-button-subscribe" *ngIf="isOwnerProfile" (click)="navigation.goToEditProfile()">
-                        <mat-card-content>Edit profile</mat-card-content>
+                    <button mat-button class="profile-button-subscribe"
+                            *ngIf="isOwnerProfile && !isReadOnly" (click)="navigation.goToEditProfile()">
+                        <mat-card-content [translate]="'profile.edit-profile' | translate">Edit profile</mat-card-content>
                     </button>
-                    <button mat-button class="profile-button-subscribe" *ngIf="!isOwnerProfile && !isFriend" (click)="onClickSubscribe()">
-                        <mat-card-content >Subscribe</mat-card-content>
+                    <button mat-button class="profile-button-subscribe" *ngIf="(!isOwnerProfile && !isFriend) || (isReadOnly && !isFriend)" (click)="onClickSubscribe()">
+                        <mat-card-content [translate]="'profile.subscribe' | translate">Subscribe</mat-card-content>
                     </button>
-                    <button mat-button class="profile-button-subscribed" *ngIf="!isOwnerProfile && isFriend">
-                        <mat-card-content >Subscribed</mat-card-content>
+                    <button mat-button class="profile-button-subscribed" *ngIf="(!isOwnerProfile && isFriend) || (isReadOnly && isFriend)">
+                        <mat-card-content [translate]="'profile.subscribed' | translate">Subscribed</mat-card-content>
                     </button>
                 </div>
             </div>
@@ -56,7 +57,7 @@
     </div>
     <div fxFlex="60" fxLayoutAlign="center" style="background: #ECF7FB; margin-top: 2px; margin-bottom: 2px">
         <mat-card style="background: #ECF7FB; width: 100%; justify-content: center">
-            <mat-card-header style="background: #ECF7FB; width: 100%; justify-content: center">About Me</mat-card-header>
+            <mat-card-header style="background: #ECF7FB; width: 100%; justify-content: center" [translate]="'profile.about-me' | translate">About Me</mat-card-header>
         </mat-card>
     </div>
 </div>

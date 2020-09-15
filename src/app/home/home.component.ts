@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit {
           if (this.users.length > 0 && this.counter === 0) {
             this.randomUser = this.users[0];
           }
-          console.log(this.users);
         });
   }
 

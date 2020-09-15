@@ -12,6 +12,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { UserProfileEditComponent } from './components/user-profile-edit/user-profile-edit.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchProfileComponent } from './components/search-profile/search-profile.component';
+import { SubscriptionListComponent } from './components/subscription-list/subscription-list.component';
 
 export const ROUTES: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -25,4 +26,5 @@ export const ROUTES: Routes = [
   {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {path: 'setting', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'search', component: SearchProfileComponent, canActivate: [AuthGuard]},
+  {path: 'friends', component: SubscriptionListComponent, canActivate: [AuthGuard]},
 ];

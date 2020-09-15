@@ -6,6 +6,7 @@ import { User } from '../../shared/user';
 import { FirebaseService } from '../../shared/firebase.service';
 import { UserService } from '../../shared/user.service';
 import { Router } from '@angular/router';
+import { NavigationService } from '../../shared/navigation.service';
 
 export interface State {
   flag: string;
@@ -25,7 +26,9 @@ export class SearchComponent implements OnInit {
   users: User[] = [];
   currentUser: User;
 
-  constructor(private firebase: FirebaseService, private userSvc: UserService, private route: Router) {
+  constructor(private firebase: FirebaseService,
+              private userSvc: UserService,
+              private route: Router, public navigation: NavigationService) {
     this.firebase.getUsers()
         .subscribe(data => {
           this.users = data;

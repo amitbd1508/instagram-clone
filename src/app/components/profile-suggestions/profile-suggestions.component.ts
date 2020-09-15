@@ -5,6 +5,7 @@ import { user } from 'firebase-functions/lib/providers/auth';
 import { Router } from '@angular/router';
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { UserService } from '../../shared/user.service';
+import { NavigationService } from '../../shared/navigation.service';
 
 @Component({
   selector: 'app-profile-suggestions',
@@ -17,7 +18,7 @@ export class ProfileSuggestionsComponent implements OnInit {
   currentUser: User;
   faArrowAltCircleRight;
 
-  constructor(private firebase: FirebaseService, private router: Router, private userService: UserService) {
+  constructor(private firebase: FirebaseService, private navigationService: NavigationService, private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.faArrowAltCircleRight = faArrowAltCircleRight;
   }
@@ -37,8 +38,7 @@ export class ProfileSuggestionsComponent implements OnInit {
   }
 
   goToUserProfile(rUser: User) {
-    this.userService.setUser(rUser);
-    this.router.navigate(['profile']);
+    this.navigationService.gotToUserProfile(rUser);
   }
 
   private removeCurrentUser() {
