@@ -12,8 +12,12 @@ export class AppComponent {
 
   currentUser: User;
   constructor(public authService: AuthService, private translate: TranslateService) {
-    translate.setDefaultLang('en');
-    localStorage.setItem('language', 'en');
+    const lng = localStorage.getItem('language');
+    if (!lng) {
+      translate.setDefaultLang('en');
+      localStorage.setItem('language', 'en');
+    }
+    translate.setDefaultLang(lng);
     this.currentUser = JSON.parse(localStorage.getItem('user'));
 
   }

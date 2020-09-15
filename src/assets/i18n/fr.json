@@ -6,7 +6,8 @@
     "suggested-user": "Suggestion utilisateur"
   },
   "friend-list": {
-    "my-subscriptions": "Mes abonnements"
+    "my-subscriptions": "Mes abonnements",
+    "seemore": "voir plus"
   },
   "comment": {
     "comment": "Commentaire",
@@ -18,5 +19,32 @@
   },
   "search": {
     "quick-search": "recherche rapide"
+  },
+  "chat": {
+    "messages":"messages",
+    "enter-your-message": "entrez votre message",
+    "your-messages": "Tes messages",
+    "send-private-messages-to-a-friend": "Envoyer des messages privés à un ami"
+  },
+  "profile": {
+    "send-message": "Envoyer un message",
+    "likes": "aime",
+    "subscribers": "Les abonnés",
+    "edit-profile": "Modifier le profil",
+    "subscribe": "Subscribe",
+    "subscribed": "S'abonner",
+    "about-me": "Abonné"
+  },
+  "edit-profile": {
+    "user-profile-edit": "User Profile Edit",
+    "edit-your-profile": "Modifier votre profil",
+    "name": "Nom",
+    "update":"Update",
+    "designation": "Désignation",
+    "your-bio": "Votre bio",
+    "profile-photo": "Photo de profil",
+    "upload-a-image": "Télécharger une image",
+    "primary-photo": "Photo principale",
+    "secondary-photo": "Photo secondaire"
   }
 }

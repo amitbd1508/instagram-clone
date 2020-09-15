@@ -1,6 +1,6 @@
 <div fxLayout="column">
     <mat-card fxFlex="90" *ngIf="friends && friends.length>0" style="background: #F7F8F8">
-        <mat-card-title [translate]="'friend-list.my-subscriptions'" style="background: #F7F8F8"> MY SUBSCRIPTIONS </mat-card-title>
+        <mat-card-title [translate] = "'friend-list.my-subscriptions' | translate" style="background: #F7F8F8"> MY SUBSCRIPTIONS </mat-card-title>
         <div class="inboxContainer">
             <mat-card *ngFor="let friend of friends" style="background: #F7F8F8" (click)="navigation.gotToUserProfile(friend)" >
                 <mat-card-header>
@@ -17,7 +17,7 @@
         </div>
     </mat-card>
     <div fxFlex="10" fxLayoutAlign="end" (click)="navigation.gotToFriendList()">
-        <button mat-button  [translate]="'friend-list.see-more'" >See More</button>
+        <button mat-button  [translate] = "'friend-list.seemore' | translate" >See More</button>
     </div>
 
 </div>
