@@ -46,5 +46,26 @@
     "upload-a-image": "Upload A Image",
     "primary-photo": "Primary Photo",
     "secondary-photo": "Secondary Photo"
+  },
+  "setting": {
+    "account_settings": "Account Settings",
+    "user_settings": "User Settings",
+    "account_preference": "account_preference",
+    "cannot_change": "Cannot Change",
+    "change_password": "Change Password",
+    "password_advice": "It's good idea use a strong password that you're not using elsewhere",
+    "change": "Change",
+    "change_language": "Change Language",
+    "change_language_info": "Change to your preferred language",
+    "deactivate_account": "Deactivate Account",
+    "delete_account": "Delete Account"
+  },
+  "dialog": {
+    "confirm": {
+      "title": "Are you sure?",
+      "body": "Do you really want to delete the account with all data? This cannot be undone",
+      "cancel": "Cancel",
+      "sure": "Sure"
+    }
   }
 }

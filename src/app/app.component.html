@@ -15,7 +15,7 @@
   <button (click)="authService.gotToChat()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
     <img src="/assets/icons/message.svg">
   </button>
-  <button (click)="authService.gotToHome()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
+  <button (click)="authService.gotToHome()" mat-icon-button style="background: none; margin-left: 5px; margin-right: 5px">
     <img src="/assets/icons/home.svg">
   </button>
   <button (click)="authService.goToSettingPage()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
@@ -23,7 +23,6 @@
   </button>
 
   <button mat-icon-button *ngIf="authService.isLoggedIn" (click)="authService.goToProfile()">
-    <mat-icon *ngIf="!currentUser?.photoURL">account_box</mat-icon>
     <img [src]="currentUser?.photoURL" class="profile-image">
   </button>
   <button mat-icon-button *ngIf="authService.isLoggedIn">

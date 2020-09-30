@@ -3,13 +3,12 @@
         <img src="/assets/icons/delete.svg" style="height: 100px">
     </div>
 
-    <h1 mat-dialog-title>Are you sure?</h1>
-    <p>
-        Do you really want to delete the account with all data? This cannot be undone.
+    <h1 mat-dialog-title [translate]="'dialog.confirm.title' | translate"></h1>
+    <p [translate]="'dialog.confirm.body' | translate">
     </p>
 
     <div mat-dialog-actions>
-        <button mat-button (click)="onCancelClick()">Cancel</button>
-        <button mat-button (click)="onUpdateDrugClick()">Sure</button>
+        <button mat-button (click)="onCancelClick()"  [translate]="'dialog.confirm.cancel' | translate">Cancel</button>
+        <button mat-button (click)="onUpdateDrugClick()"  [translate]="'dialog.confirm.sure' | translate">Sure</button>
     </div>
 </div>

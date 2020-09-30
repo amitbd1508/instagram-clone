@@ -46,5 +46,27 @@
     "upload-a-image": "Télécharger une image",
     "primary-photo": "Photo principale",
     "secondary-photo": "Photo secondaire"
+  },
+  "setting": {
+    "account_settings": "Paramètres du compte",
+    "user_settings": "Paramètres utilisateur",
+    "account_preference": "Préférence de compte",
+    "email": "Email",
+    "cannot_change": "Ne peut pas changer",
+    "change_password": "Changer le mot de passe",
+    "password_advice": "C'est une bonne idée d'utiliser un mot de passe fort que vous n'utilisez pas ailleurs",
+    "change": "Modifier",
+    "change_language": "changer de langue",
+    "change_language_info": "Changez pour votre langue préférée",
+    "deactivate_account": "Désactiver le compte ",
+    "delete_account": "Supprimer le compte"
+  },
+  "dialog": {
+    "confirm": {
+      "title": "Êtes-vous sûr?",
+      "body": "Voulez-vous vraiment supprimer le compte avec toutes les données? Ça ne peut pas être annulé",
+      "cancel": "Annuler",
+      "sure": "Sûre"
+    }
   }
 }
