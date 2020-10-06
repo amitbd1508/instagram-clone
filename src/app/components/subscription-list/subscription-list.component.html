@@ -6,7 +6,7 @@
 <div>
     <mat-grid-list cols="5">
         <div *ngFor="let user of friends">
-            <mat-grid-tile (click)="goToUserProfile(user)">
+            <mat-grid-tile (click)="this.navigation.gotToUserProfile(user)">
                 <mat-card style="justify-content: center; background: #F7F8F8">
                     <div id="over" >
                         <img style="height: 100%; width: 80%; align-content: center"

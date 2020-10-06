@@ -1,7 +1,7 @@
 <div>
     <div class="example-form">
         <div class="example-full-width">
-            <button  [translate]="'search.quick-search' | translate"
+            <button  class="btn btn-dark" [translate]="'search.quick-search' | translate"
                    (click)="navigation.goToSearch()"></button>
             <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let user of filteredStates | async" [value]="user.displayName">

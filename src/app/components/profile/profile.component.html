@@ -36,7 +36,7 @@
                         0
                         <p [translate]="'profile.likes' | translate">Likes</p>
                     </button>
-                    <button mat-button class="profile-button">
+                    <button mat-button class="profile-button" (click)="goToFriendList()">
                         {{numberOfFriends}}
                         <p [translate]="'profile.subscribers' | translate">Subscribers</p>
                     </button>

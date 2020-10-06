@@ -45,8 +45,4 @@ export class SubscriptionListComponent implements OnInit {
           console.log(this.friends);
         });
   }
-
-  goToUserProfile(user: Friend) {
-    this.navigation.gotToUserProfile(user);
-  }
 }

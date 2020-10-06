@@ -4,21 +4,21 @@
   </span>
   <span class="example-spacer">
   </span>
-  <app-search ></app-search>
-  <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignUp()">
+  <app-search *ngIf="authService.isLoggedIn"></app-search>
+  <button class="mr-4 btn btn-dark" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignUp()">
     Register
   </button>
-  <button class="mr-4" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignIn()">
+  <button class="mr-4 btn btn-dark" *ngIf="!authService.isLoggedIn" (click)="authService.goToSignIn()">
     Login
   </button>
 
-  <button (click)="authService.gotToChat()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
+  <button *ngIf="authService.isLoggedIn" (click)="authService.gotToChat()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
     <img src="/assets/icons/message.svg">
   </button>
-  <button (click)="authService.gotToHome()" mat-icon-button style="background: none; margin-left: 5px; margin-right: 5px">
+  <button *ngIf="authService.isLoggedIn" (click)="authService.gotToHome()" mat-icon-button style="background: none; margin-left: 5px; margin-right: 5px">
     <img src="/assets/icons/home.svg">
   </button>
-  <button (click)="authService.goToSettingPage()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
+  <button *ngIf="authService.isLoggedIn" (click)="authService.goToSettingPage()" mat-icon-button style="margin-left: 5px; margin-right: 5px">
     <img src="/assets/icons/setting.svg">
   </button>
 

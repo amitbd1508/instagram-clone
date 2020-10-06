@@ -61,6 +61,13 @@ export class ProfileComponent implements OnInit, OnChanges {
         .subscribe(user => {
           this.currentUser = user;
         });
+
+  }
+
+  goToFriendList() {
+    if(this.isOwnerProfile) {
+      this.navigation.gotToFriendList()
+    }
   }
 
   getFriend() {
