@@ -4,6 +4,7 @@ import { User } from '../../shared/user';
 import { UserService } from '../../shared/user.service';
 import { FirebaseService } from '../../shared/firebase.service';
 import { ToastrService } from 'ngx-toastr';
+import {NavigationService} from "../../shared/navigation.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -16,8 +17,16 @@ export class UserProfileComponent implements OnInit {
   isAlreadyFriend: boolean;
   loading = false;
 
-  constructor(public userSvc: UserService, private firebaseSvc: FirebaseService, private toastr: ToastrService) {
-    this.currentUser = JSON.parse(localStorage.getItem('user'));
+  constructor(public nav: NavigationService, private firebaseSvc: FirebaseService, private toastr: ToastrService) {
+    if(this.nav.isShowProfile){
+      this.currentUser = this.nav.selectedUser as User;
+      this.firebaseSvc.getUserById(this.nav.selectedUser.uid)
+        .subscribe(user => {
+          this.currentUser = user;
+        })
+    } else {
+      this.currentUser = JSON.parse(localStorage.getItem('user'));
+    }
   }
 
   ngOnInit(): void {
